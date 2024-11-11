@@ -73,11 +73,6 @@ class Employee {
     private String name;
     private List<Timecard> timecards;
 
-    /**
-     * Constructor for Employee.
-     * @param id the unique ID of the employee
-     * @param name the name of the employee
-     */
     public Employee(int id, String name) {
         this.id = id;
         this.name = name;
