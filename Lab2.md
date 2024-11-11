@@ -41,7 +41,6 @@ class Timecard {
     private Date date;
     private double hoursWorked;
 
-    
     public Timecard(Date date, double hoursWorked) {
         this.date = date;
         this.hoursWorked = hoursWorked;
