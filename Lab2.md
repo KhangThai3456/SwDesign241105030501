@@ -1,4 +1,4 @@
-# Tài liệu Phân tích Hệ thống Payroll System - Lab 1
+# Tài liệu Phân tích Hệ thống Payroll System - Lab 2
 
 ## 1. Phân tích ca sử dụng Create Employee
 - **Mô tả**: Quản trị viên hoặc người có thẩm quyền có thể tạo hồ sơ cho nhân viên mới trong hệ thống.
