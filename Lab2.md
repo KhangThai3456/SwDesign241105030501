@@ -31,6 +31,7 @@
 - **Kết quả mong đợi**: Thông tin nhân viên luôn được cập nhật chính xác trong hệ thống.
 
 ## 7. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +44,11 @@ class Timecard {
     private Date date;
     private double hoursWorked;
 
+    /**
+     * Constructor for Timecard.
+     * @param date the date of the timecard entry
+     * @param hoursWorked the number of hours worked on that date
+     */
     public Timecard(Date date, double hoursWorked) {
         this.date = date;
         this.hoursWorked = hoursWorked;
@@ -78,18 +84,33 @@ class Employee {
     private String name;
     private List<Timecard> timecards;
 
+    /**
+     * Constructor for Employee.
+     * @param id the unique ID of the employee
+     * @param name the name of the employee
+     */
     public Employee(int id, String name) {
         this.id = id;
         this.name = name;
         this.timecards = new ArrayList<>();
     }
 
+    /**
+     * Adds a timecard to the employee's record.
+     * @param date the date of the timecard entry
+     * @param hoursWorked the number of hours worked on that date
+     */
     public void addTimecard(Date date, double hoursWorked) {
         Timecard timecard = new Timecard(date, hoursWorked);
         timecards.add(timecard);
         System.out.println("Added: " + timecard);
     }
 
+    /**
+     * Updates an existing timecard's hours.
+     * @param date the date of the timecard to update
+     * @param newHoursWorked the new hours worked to be set
+     */
     public void updateTimecard(Date date, double newHoursWorked) {
         for (Timecard timecard : timecards) {
             if (timecard.getDate().equals(date)) {
@@ -101,11 +122,18 @@ class Employee {
         System.out.println("Timecard not found for date: " + date);
     }
 
+    /**
+     * Deletes a timecard for a specific date.
+     * @param date the date of the timecard to delete
+     */
     public void deleteTimecard(Date date) {
         timecards.removeIf(timecard -> timecard.getDate().equals(date));
         System.out.println("Deleted timecard for date: " + date);
     }
 
+    /**
+     * Displays all timecards for the employee.
+     */
     public void displayTimecards() {
         System.out.println("Timecards for " + name + ":");
         for (Timecard timecard : timecards) {
@@ -113,6 +141,7 @@ class Employee {
         }
     }
 }
+
 
 /**
  * Main class PayrollSystem
