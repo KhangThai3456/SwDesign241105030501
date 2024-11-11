@@ -32,104 +32,103 @@
 
 ## 7. Viết code Java mô phỏng ca sử dụng Maintain Timecard.
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-
-class Timecard {
-    private Date date;
-    private double hoursWorked;
-
-    public Timecard(Date date, double hoursWorked) {
-        this.date = date;
-        this.hoursWorked = hoursWorked;
+    import java.util.ArrayList;
+    import java.util.Date;
+    import java.util.List;
+    
+    class Timecard {
+        private Date date;
+        private double hoursWorked;
+    
+        public Timecard(Date date, double hoursWorked) {
+            this.date = date;
+            this.hoursWorked = hoursWorked;
+        }
+    
+        public Date getDate() {
+            return date;
+        }
+    
+        public double getHoursWorked() {
+            return hoursWorked;
+        }
+    
+        public void setHoursWorked(double hoursWorked) {
+            this.hoursWorked = hoursWorked;
+        }
+    
+        @Override
+        public String toString() {
+            return "Timecard{" +
+                    "date=" + date +
+                    ", hoursWorked=" + hoursWorked +
+                    '}';
+        }
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public double getHoursWorked() {
-        return hoursWorked;
-    }
-
-    public void setHoursWorked(double hoursWorked) {
-        this.hoursWorked = hoursWorked;
-    }
-
-    @Override
-    public String toString() {
-        return "Timecard{" +
-                "date=" + date +
-                ", hoursWorked=" + hoursWorked +
-                '}';
-    }
-}
-
-class Employee {
-    private int id;
-    private String name;
-    private List<Timecard> timecards;
-
-    public Employee(int id, String name) {
-        this.id = id;
-        this.name = name;
-        this.timecards = new ArrayList<>();
-    }
-
-    public void addTimecard(Date date, double hoursWorked) {
-        Timecard timecard = new Timecard(date, hoursWorked);
-        timecards.add(timecard);
-        System.out.println("Added: " + timecard);
-    }
-
-    public void updateTimecard(Date date, double newHoursWorked) {
-        for (Timecard timecard : timecards) {
-            if (timecard.getDate().equals(date)) {
-                timecard.setHoursWorked(newHoursWorked);
-                System.out.println("Updated: " + timecard);
-                return;
+    
+    class Employee {
+        private int id;
+        private String name;
+        private List<Timecard> timecards;
+    
+        public Employee(int id, String name) {
+            this.id = id;
+            this.name = name;
+            this.timecards = new ArrayList<>();
+        }
+    
+        public void addTimecard(Date date, double hoursWorked) {
+            Timecard timecard = new Timecard(date, hoursWorked);
+            timecards.add(timecard);
+            System.out.println("Added: " + timecard);
+        }
+    
+        public void updateTimecard(Date date, double newHoursWorked) {
+            for (Timecard timecard : timecards) {
+                if (timecard.getDate().equals(date)) {
+                    timecard.setHoursWorked(newHoursWorked);
+                    System.out.println("Updated: " + timecard);
+                    return;
+                }
+            }
+            System.out.println("Timecard not found for date: " + date);
+        }
+    
+        public void deleteTimecard(Date date) {
+            timecards.removeIf(timecard -> timecard.getDate().equals(date));
+            System.out.println("Deleted timecard for date: " + date);
+        }
+    
+        public void displayTimecards() {
+            System.out.println("Timecards for " + name + ":");
+            for (Timecard timecard : timecards) {
+                System.out.println(timecard);
             }
         }
-        System.out.println("Timecard not found for date: " + date);
     }
-
-    public void deleteTimecard(Date date) {
-        timecards.removeIf(timecard -> timecard.getDate().equals(date));
-        System.out.println("Deleted timecard for date: " + date);
-    }
-
-    public void displayTimecards() {
-        System.out.println("Timecards for " + name + ":");
-        for (Timecard timecard : timecards) {
-            System.out.println(timecard);
+    
+    public class PayrollSystem {
+        public static void main(String[] args) {
+            Employee employee = new Employee(1, "John Doe");
+    
+            // Sample dates for demonstration purposes
+            Date date1 = new Date(2024, 10, 1); // Adjust the date as per your needs
+            Date date2 = new Date(2024, 10, 2);
+    
+            // Adding timecards
+            employee.addTimecard(date1, 8);
+            employee.addTimecard(date2, 7.5);
+    
+            // Displaying timecards
+            employee.displayTimecards();
+    
+            // Updating a timecard
+            employee.updateTimecard(date1, 8.5);
+    
+            // Deleting a timecard
+            employee.deleteTimecard(date2);
+    
+            // Displaying timecards after updates
+            employee.displayTimecards();
         }
     }
-}
-
-public class PayrollSystem {
-    public static void main(String[] args) {
-        Employee employee = new Employee(1, "John Doe");
-
-        // Sample dates for demonstration purposes
-        Date date1 = new Date(2024, 10, 1); // Adjust the date as per your needs
-        Date date2 = new Date(2024, 10, 2);
-
-        // Adding timecards
-        employee.addTimecard(date1, 8);
-        employee.addTimecard(date2, 7.5);
-
-        // Displaying timecards
-        employee.displayTimecards();
-
-        // Updating a timecard
-        employee.updateTimecard(date1, 8.5);
-
-        // Deleting a timecard
-        employee.deleteTimecard(date2);
-
-        // Displaying timecards after updates
-        employee.displayTimecards();
-    }
-}
