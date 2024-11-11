@@ -36,19 +36,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Class Timecard
- * Represents an individual timecard entry with date and hours worked.
- */
+
 class Timecard {
     private Date date;
     private double hoursWorked;
 
-    /**
-     * Constructor for Timecard.
-     * @param date the date of the timecard entry
-     * @param hoursWorked the number of hours worked on that date
-     */
+    
     public Timecard(Date date, double hoursWorked) {
         this.date = date;
         this.hoursWorked = hoursWorked;
@@ -75,10 +68,6 @@ class Timecard {
     }
 }
 
-/**
- * Class Employee
- * Manages a list of timecards for a specific employee.
- */
 class Employee {
     private int id;
     private String name;
@@ -95,22 +84,12 @@ class Employee {
         this.timecards = new ArrayList<>();
     }
 
-    /**
-     * Adds a timecard to the employee's record.
-     * @param date the date of the timecard entry
-     * @param hoursWorked the number of hours worked on that date
-     */
     public void addTimecard(Date date, double hoursWorked) {
         Timecard timecard = new Timecard(date, hoursWorked);
         timecards.add(timecard);
         System.out.println("Added: " + timecard);
     }
 
-    /**
-     * Updates an existing timecard's hours.
-     * @param date the date of the timecard to update
-     * @param newHoursWorked the new hours worked to be set
-     */
     public void updateTimecard(Date date, double newHoursWorked) {
         for (Timecard timecard : timecards) {
             if (timecard.getDate().equals(date)) {
@@ -122,18 +101,11 @@ class Employee {
         System.out.println("Timecard not found for date: " + date);
     }
 
-    /**
-     * Deletes a timecard for a specific date.
-     * @param date the date of the timecard to delete
-     */
     public void deleteTimecard(Date date) {
         timecards.removeIf(timecard -> timecard.getDate().equals(date));
         System.out.println("Deleted timecard for date: " + date);
     }
 
-    /**
-     * Displays all timecards for the employee.
-     */
     public void displayTimecards() {
         System.out.println("Timecards for " + name + ":");
         for (Timecard timecard : timecards) {
@@ -142,11 +114,6 @@ class Employee {
     }
 }
 
-
-/**
- * Main class PayrollSystem
- * Demonstrates the use of Employee and Timecard classes.
- */
 public class PayrollSystem {
     public static void main(String[] args) {
         Employee employee = new Employee(1, "John Doe");
