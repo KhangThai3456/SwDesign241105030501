@@ -43,7 +43,7 @@ c) Mô tả hệ thống con, interface của hệ thống con
 
    - Biểu đồ ánh xạ các lớp phân tích đến các phần tử thiết kế
 
-   ![Class Diagram](https://www.planttext.com/api/plantuml/png/V95DQiD034RtFiMGOymgRcXA8852sWC8-MigF3z68oUOqfDrqIFr2hLfIvr0egK-wJs4lZu-byL8hO-XgZhYbWvmYvqqJS295DxlmRsA3Tu_F6_SMYdYbBLTkBVAZSM1Id7RV92qpXfdlHr9ghik29D9_adVPv9PLho_Zrt80-1gDZcA2SgvOiBz3LsOdYI2IPihxLLEfZa4w0t_8mtJpBbpFnH3N8NCxIOPz8KOi_Xtvmh_hY-IC56WHs7yIroj9YFBBauSOtu5jnDcYTHCJ_a6003__mC0)
+   ![Class Diagram](https://www.planttext.com/api/plantuml/png/X99D2i8m44RtEKKlu1MafIW82e9UO4X73SrFIU8YY2TpuP6yWarC9MsA1h98visGxv7NuraQ2zfU1IU4SZ2csAepaskbHJplWCcLwBXoYCdraGcae9i9MNKTPnGiKt86hfMqMd6EEXOEpbWKDLUqtKYB-WGKOsaFpgDPItzFBqZRuRsL1EuCCtKutKZHhs-6Oh5O9ebypR_IzZiD4B0iw4zwbF_ltAaMtv1B6GrEWdjwpbJWPnNwZanWm7EjaGrI1-HZ-4v8YRBnd-CD003__mC0)
 
 ## 3. Design element to owning package map
 
