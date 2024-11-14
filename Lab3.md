@@ -33,3 +33,5 @@ Biểu đồ Class ánh xạ các lớp phân tích đến các phần tử thi�
 
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/V9513e8m44Ntd88BS0M38PgOQ6AY5vYKKHkc7TAE2yxcmYDv1G7158ekkkZyryd_lw_7C_S2Jkw64aNWVRhdgxPRTcQu7q3RZQc96yHWVDO65RXoHgxhchG2qMmNu8AjE2P2DmYdnWkQWbXLEoleBg1ma8xGT6Zqf9sh6wegIRvEqonR1Rux7zAUq6AFH55-afDqV_VD0yTH9mk3E4lPUtQnbAYE7erB6kiPvKzNETgo--8t0000__y30000)
 
+- LoginForm
+  - **Phân tích (Analysis Class)**
