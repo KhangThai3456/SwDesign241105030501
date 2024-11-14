@@ -12,4 +12,15 @@ b) Giải thích
    - Mối quan hệ:
      - **PayrollController**: liên kết với IBankSystem để thực hiện hành động deposit.
      -  **BankSystemProxy**: thực hiện IBankSystem.
-     -  **IBankSystem**: phụ thuộc vào Paycheck và BankInformation trong quá trình hoạt động. 
+     -  **IBankSystem**: phụ thuộc vào Paycheck và BankInformation trong quá trình hoạt động.
+c) Mô tả hệ thống con, interface của hệ thống con
+   - Hệ Thống Con BankSystem:
+     - **Chức năng**: Hệ thống con BankSystem chịu trách nhiệm thực hiện các giao dịch ngân hàng, đặc biệt là gửi tiền trực tiếp vào tài khoản ngân hàng của nhân viên. Nó được triển khai để xử lý việc nộp tiền lương vào các tài khoản được chỉ định.
+     - **Mục đích**: Cung cấp dịch vụ nộp tiền tự động cho hệ thống trả lương, đảm bảo rằng các khoản lương được gửi đúng vào tài khoản ngân hàng của từng nhân viên.
+   - Giao Diện IBankSystem:
+     - **Tên Giao Diện**: IBankSystem
+     - **Mô Tả**: Đây là giao diện mà hệ thống trả lương (PayrollController) sẽ sử dụng để thực hiện nộp tiền vào tài khoản ngân hàng.
+     - **Phương Thức Chính**:
+          - **deposit(aPaycheck : Paycheck, intoBank : BankInformation)**: Phương thức này nhận vào một đối tượng Paycheck và thông tin tài khoản ngân hàng (BankInformation). Khi được gọi, nó sẽ thực hiện việc nộp tiền vào tài khoản ngân hàng tương ứng dựa trên thông tin đã cung cấp.
+
+## 2.
