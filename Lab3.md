@@ -32,6 +32,6 @@ c) Mô tả hệ thống con, interface của hệ thống con
    - Ánh xạ từ lớp phân tích (Analysis Class) sang phần tử thiết kế (Design Element) là cách chuyển đổi các khái niệm logic trong phân tích thành các phần tử cụ thể trong thiết kế, nhằm hiện thực hóa yêu cầu chức năng và phi chức năng của hệ thống.
 
    - Ví dụ
-     - **LoginForm** (lớp phân tích) sang LoginForm (phần tử thiết kế)
+     - **LoginForm** (lớp phân tích) sang **LoginForm** (phần tử thiết kế)
 
 
