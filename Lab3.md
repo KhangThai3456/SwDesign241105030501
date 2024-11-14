@@ -22,5 +22,13 @@ c) Mô tả hệ thống con, interface của hệ thống con
      - **Mô Tả**: Đây là giao diện mà hệ thống trả lương (PayrollController) sẽ sử dụng để thực hiện nộp tiền vào tài khoản ngân hàng.
      - **Phương Thức Chính**:
           - **deposit(aPaycheck : Paycheck, intoBank : BankInformation)**: Phương thức này nhận vào một đối tượng Paycheck và thông tin tài khoản ngân hàng (BankInformation). Khi được gọi, nó sẽ thực hiện việc nộp tiền vào tài khoản ngân hàng tương ứng dựa trên thông tin đã cung cấp.
+   - Các Thành Phần Liên Quan:
+     - **PayrollController**: Đây là thành phần kiểm soát quá trình trả lương và là thành phần gọi phương thức deposit của giao diện IBankSystem để gửi tiền lương vào tài khoản ngân hàng của nhân viên.
+     - **Paycheck**: Đối tượng này chứa thông tin về tiền lương của nhân viên, bao gồm số tiền và các thông tin chi tiết khác liên quan đến kỳ lương.
+     - **BankInformation**: Đối tượng này lưu trữ thông tin tài khoản ngân hàng của nhân viên, bao gồm số tài khoản, chi nhánh và các thông tin cần thiết để thực hiện giao dịch ngân hàng.
 
-## 2.
+## 2. Analysis class to design element map
+
+   Biểu đồ Class ánh xạ các lớp phân tích đến các phần tử thiết kế
+  ![Class Diagram] (https://www.planttext.com/api/plantuml/png/V9513e8m44Ntd88BS0M38PgOQ6AY5vYKKHkc7TAE2yxcmYDv1G7158ekkkZyryd_lw_7C_S2Jkw64aNWVRhdgxPRTcQu7q3RZQc96yHWVDO65RXoHgxhchG2qMmNu8AjE2P2DmYdnWkQWbXLEoleBg1ma8xGT6Zqf9sh6wegIRvEqonR1Rux7zAUq6AFH55-afDqV_VD0yTH9mk3E4lPUtQnbAYE7erB6kiPvKzNETgo--8t0000__y30000)
+
