@@ -59,3 +59,8 @@ c) Mô tả hệ thống con, interface của hệ thống con
 
    ![Class Diagram](https://www.planttext.com/api/plantuml/png/V95DQiD034RtFiMGOymgRcXA8852sWC8-MigF3z68oUOqfDrqIFr2hLfIvr0egK-wJs4lZu-byL8hO-XgZhYbWvmYvqqJS295DxlmRsA3Tu_F6_SMYdYbBLTkBVAZSM1Id7RV92qpXfdlHr9ghik29D9_adVPv9PLho_Zrt80-1gDZcA2SgvOiBz3LsOdYI2IPihxLLEfZa4w0t_8mtJpBbpFnH3N8NCxIOPz8KOi_Xtvmh_hY-IC56WHs7yIroj9YFBBauSOtu5jnDcYTHCJ_a6003__mC0)
 
+## 4. Architectural layers and their dependencies
+
+  - Biểu đồ mô tả các layers trong hệ thống và quan hệ giữa chúng
+
+  ![Class Diagram](https://www.planttext.com/api/plantuml/png/V991Ri8m44NtFiM8FHT0A0g83L8NLH476CmGhAQEvPaWHQW7wG5OSe5cqRFa15m1MofId8PwwV_Vz_oHR-rFpe9UwezIAOVw7Gk2oNnUOaC-o-3L4vCL55FP2PmLXADBP8OjarzR8Nz0JUfpb5uuLnez0lU43VcJUPgmhDbO2iIlZTESX_nI5KO_YLYX82nqO0Tm5Dx8LMoayiq_z0wP_gBnjZTyiW-OJhEHaZ03xjehxBlsOWirOeXSKYeWxXZi8CUwQx-qIjNeJtiCtXY83tzl-028hnlGtVVLAPMJtSVVS0S00F__0m00)
