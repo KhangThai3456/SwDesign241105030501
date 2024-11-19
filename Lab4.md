@@ -2,6 +2,10 @@
 
 ## 1. Exercise: Use-Case Analysis
 
+## 1.1. Use-Case Realization Interaction Diagram
+
+## 1.1.1. Login
+
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/X50x3e904Etd51CgBRY0XK4BAZlZ0IRincpO3zaP89pDmYDv1HU2G8o9tRmtxpEPr-DPi52KrbdWslY68ZcaIaAyoc0rifYg1X0Z2Lp2tNZCyKniAYnjw04cBMOdF-2DTSoG61COPqXfoMuQyeBPP2v3T9DaGG2p6lFZoXvGUqbScnQUd4Ro2XjYxaDKk_tOQZeIlLGjpg-OZgnHe_1lqdhH9Yk5pGq7Z9fRAw3q3yk6_5m4XVPg_2ky0G00__y30000)
 
 ![Use Case Diagram](https://www.planttext.com/api/plantuml/png/T8z12i9034NtEKNeIXTUm8LK144GN8W729qWeMscpAGjFPiBZ-GLd2bIGN0JyfFtVyZhyIoZKR2-RI3MeXq5Qf4gy-5gKyCOJQeQmCIIEFkxADuYuu5IEQbnIAnunSl0OH0U0MOp5dkTCXaAf8X9v1vIVCgJZjImcDEEFhGpiYY03usRtNUwHSxNi4yBfPQHr657COu-kDKQ5l37DL0ZZep_6g5aTVbzU0C00F__0m00)
@@ -66,5 +70,25 @@
 
 ---
 
+## Các Tính Năng Mở Rộng
 
+### **Báo cáo thống kê (Generate Reports):**
+- **Diễn viên:** Quản trị viên
+- **Mục đích:** Quản trị viên có thể tạo các báo cáo tổng hợp về chi phí lương, nghỉ phép, và các thông tin tài chính khác để hỗ trợ các quyết định quản lý.
+- **Luồng chính:**
+  + Quản trị viên truy cập vào phần báo cáo trong hệ thống.
+  + Quản trị viên chọn loại báo cáo cần tạo.
+  + Hệ thống tạo và xuất báo cáo theo yêu cầu.
+- **Tiền điều kiện:** Quản trị viên đã đăng nhập và có quyền truy cập báo cáo.
+- **Hậu điều kiện:** Báo cáo được tạo thành công và có sẵn cho người quản lý sử dụng.
+
+---
+
+### **Thông báo tự động (Automated Notifications):**
+- **Diễn viên:** Quản trị viên, Nhân viên
+- **Mục đích:** Hệ thống gửi thông báo tự động cho người dùng về các thay đổi quan trọng trong hệ thống.
+- **Luồng chính:**
+  + Hệ thống gửi thông báo cho người dùng khi có thay đổi về bảng lương, thông tin tài khoản, hoặc khi có thông báo quan trọng từ quản trị viên.
+- **Tiền điều kiện:** Người dùng đã đăng nhập vào hệ thống.
+- **Hậu điều kiện:** Người dùng nhận được thông báo kịp thời về các sự kiện quan trọng.
 
