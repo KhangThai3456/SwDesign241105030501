@@ -23,10 +23,10 @@
 - **Diễn viên:** Quản trị viên
 - **Mục đích:** Quản trị viên có thể tạo, sửa, hoặc đặt lại mật khẩu cho tài khoản người dùng.
 - **Luồng chính:**
-  1. Quản trị viên chọn "Quản lý tài khoản".
-  2. Tạo tài khoản mới hoặc cập nhật thông tin tài khoản.
-  3. Cung cấp tính năng đặt lại mật khẩu cho người dùng.
-  4. Hệ thống lưu các thay đổi.
+    Quản trị viên chọn "Quản lý tài khoản".
+    Tạo tài khoản mới hoặc cập nhật thông tin tài khoản.
+    Cung cấp tính năng đặt lại mật khẩu cho người dùng.
+    Hệ thống lưu các thay đổi.
 - **Tiền điều kiện:** Quản trị viên phải có quyền truy cập vào phần quản lý tài khoản.
 - **Hậu điều kiện:** Tài khoản người dùng được tạo mới hoặc cập nhật thành công.
 
