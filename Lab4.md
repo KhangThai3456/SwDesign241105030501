@@ -18,7 +18,6 @@
 - **Hậu điều kiện:** Người dùng đăng nhập thành công hoặc nhận thông báo lỗi.
 
 ---
-
 ### **Quản lý tài khoản (Account Management)**
 - **Actor:** Quản trị viên
 - **Mục đích:** Quản trị viên có thể tạo, sửa, hoặc đặt lại mật khẩu cho tài khoản người dùng.
@@ -33,7 +32,7 @@
 ---
 
 ### **Quản lý nhân viên (Manage Employees)**
-- **Actor:** Quản trị viên
+- **Diễn viên:** Quản trị viên
 - **Mục đích:** Quản lý thông tin nhân viên như thêm mới, sửa thông tin hoặc xóa nhân viên khỏi hệ thống.
 - **Luồng chính:**
   + Quản trị viên nhập thông tin nhân viên mới.
@@ -41,32 +40,6 @@
   + Quản trị viên có thể sửa hoặc xóa thông tin nhân viên khi cần thiết.
 - **Tiền điều kiện:** Người dùng phải có quyền quản trị để thực hiện thao tác này.
 - **Hậu điều kiện:** Danh sách nhân viên được cập nhật chính xác.
-
----
-
-### **Tính toán bảng lương (Calculate Payroll)**
-- **Actor:** Quản trị viên
-- **Mục đích:** Tính toán lương cho nhân viên dựa trên dữ liệu giờ làm, phụ cấp và khấu trừ.
-- **Luồng chính:**
-  + Quản trị viên nhập số giờ làm, tiền thưởng, và các khoản khấu trừ.
-  + Hệ thống tính toán lương dựa trên công thức:
-     - Lương = Lương cơ bản + Phụ cấp - Khấu trừ
-  + Hệ thống lưu kết quả vào cơ sở dữ liệu.
-- **Tiền điều kiện:** Dữ liệu nhân viên phải đầy đủ.
-- **Hậu điều kiện:** Bảng lương được tính toán chính xác và lưu trữ.
-
----
-
-### **Xem bảng lương cá nhân (View Personal Payroll)**
-- **Actor:** Nhân viên
-- **Mục đích:** Nhân viên xem thông tin lương của mình qua từng tháng.
-- **Luồng chính:**
-  + Nhân viên truy cập vào mục "Xem bảng lương cá nhân".
-  + Hệ thống hiển thị bảng lương theo từng kỳ tính lương.
-- **Tiền điều kiện:** Nhân viên đã đăng nhập vào hệ thống.
-- **Hậu điều kiện:** Nhân viên có thể xem lịch sử bảng lương của mình.
-
----
 
 ## Lý Do Thiết Kế Các Ca Sử Dụng
 
@@ -81,4 +54,6 @@
 
 - **Báo cáo thống kê (Generate Reports):** Quản trị viên có thể tạo các báo cáo về chi phí lương, nghỉ phép, và các thông tin liên quan để phục vụ cho các báo cáo tài chính và quyết định lãnh đạo.
 - **Thông báo tự động:** Hệ thống có thể gửi thông báo cho người dùng khi có các thay đổi quan trọng trong hệ thống, chẳng hạn như khi lương đã được tính toán hoặc khi có thông tin mới từ quản trị viên.
+
+
 
