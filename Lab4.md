@@ -43,6 +43,7 @@
 - **Tiền điều kiện:** Người dùng phải có quyền quản trị để thực hiện thao tác này.
 - **Hậu điều kiện:** Danh sách nhân viên được cập nhật chính xác.
 
+
 ## Lý Do Thiết Kế Các Ca Sử Dụng
 
 - **Tính bảo mật:** Đăng nhập và quản lý tài khoản giúp đảm bảo rằng chỉ người dùng hợp lệ có thể truy cập vào hệ thống, từ đó bảo vệ dữ liệu của tổ chức.
@@ -54,8 +55,16 @@
 
 ## Các Tính Năng Phụ Trợ
 
-- **Báo cáo thống kê (Generate Reports):** Quản trị viên có thể tạo các báo cáo về chi phí lương, nghỉ phép, và các thông tin liên quan để phục vụ cho các báo cáo tài chính và quyết định lãnh đạo.
-- **Thông báo tự động:** Hệ thống có thể gửi thông báo cho người dùng khi có các thay đổi quan trọng trong hệ thống, chẳng hạn như khi lương đã được tính toán hoặc khi có thông tin mới từ quản trị viên.
+### **Tính bảo mật:**
+- Các tính năng đăng nhập, quản lý tài khoản và quên mật khẩu đều được thiết kế để đảm bảo chỉ người dùng hợp lệ có thể truy cập vào hệ thống. Việc bảo vệ tài khoản và thông tin người dùng khỏi các truy cập trái phép là yếu tố quan trọng trong việc bảo mật dữ liệu của tổ chức.
+
+### **Tính minh bạch và tiện lợi:**
+- Các tính năng như xem bảng lương cá nhân giúp nhân viên dễ dàng theo dõi quá trình tính lương và các thay đổi liên quan đến tài chính của mình. Điều này tạo ra sự tin tưởng và minh bạch trong quy trình quản lý.
+
+### **Tính tự động hóa và hiệu quả:**
+- Việc tự động hóa các quy trình như tính toán bảng lương giúp giảm thiểu các sai sót và tiết kiệm thời gian cho bộ phận nhân sự. Các báo cáo thống kê và thông báo tự động giúp công việc quản lý trở nên đơn giản và hiệu quả hơn.
+
+---
 
 
 
