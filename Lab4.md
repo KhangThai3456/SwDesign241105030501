@@ -4,6 +4,8 @@
 
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/X50x3e904Etd51CgBRY0XK4BAZlZ0IRincpO3zaP89pDmYDv1HU2G8o9tRmtxpEPr-DPi52KrbdWslY68ZcaIaAyoc0rifYg1X0Z2Lp2tNZCyKniAYnjw04cBMOdF-2DTSoG61COPqXfoMuQyeBPP2v3T9DaGG2p6lFZoXvGUqbScnQUd4Ro2XjYxaDKk_tOQZeIlLGjpg-OZgnHe_1lqdhH9Yk5pGq7Z9fRAw3q3yk6_5m4XVPg_2ky0G00__y30000)
 
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/T8z12i9034NtEKNeIXTUm8LK144GN8W729qWeMscpAGjFPiBZ-GLd2bIGN0JyfFtVyZhyIoZKR2-RI3MeXq5Qf4gy-5gKyCOJQeQmCIIEFkxADuYuu5IEQbnIAnunSl0OH0U0MOp5dkTCXaAf8X9v1vIVCgJZjImcDEEFhGpiYY03usRtNUwHSxNi4yBfPQHr657COu-kDKQ5l37DL0ZZep_6g5aTVbzU0C00F__0m00)
+
 ## Các Ca Sử Dụng Chính
 
 ### **Đăng nhập (Login)**
@@ -32,7 +34,7 @@
 ---
 
 ### **Quản lý nhân viên (Manage Employees)**
-- **Diễn viên:** Quản trị viên
+- **Actor:** Quản trị viên
 - **Mục đích:** Quản lý thông tin nhân viên như thêm mới, sửa thông tin hoặc xóa nhân viên khỏi hệ thống.
 - **Luồng chính:**
   + Quản trị viên nhập thông tin nhân viên mới.
