@@ -10,7 +10,7 @@
 - **Diễn viên:** Người dùng (Nhân viên, Quản trị viên)
 - **Mục đích:** Người dùng đăng nhập vào hệ thống thông qua tên đăng nhập và mật khẩu hợp lệ.
 - **Luồng chính:**
-  1. Người dùng nhập tên đăng nhập và mật khẩu.
+  + Người dùng nhập tên đăng nhập và mật khẩu.
   2. Hệ thống xác thực thông tin.
   3. Nếu thông tin hợp lệ, người dùng được phép truy cập hệ thống.
   4. Nếu thông tin không hợp lệ, hệ thống thông báo lỗi.
@@ -82,9 +82,3 @@
 - **Báo cáo thống kê (Generate Reports):** Quản trị viên có thể tạo các báo cáo về chi phí lương, nghỉ phép, và các thông tin liên quan để phục vụ cho các báo cáo tài chính và quyết định lãnh đạo.
 - **Thông báo tự động:** Hệ thống có thể gửi thông báo cho người dùng khi có các thay đổi quan trọng trong hệ thống, chẳng hạn như khi lương đã được tính toán hoặc khi có thông tin mới từ quản trị viên.
 
----
-
-## 3. Các Tính Năng Phụ Trợ
-
-- **Báo cáo thống kê (Generate Reports):** Quản trị viên có thể tạo các báo cáo về chi phí lương, nghỉ phép, và các thông tin liên quan để phục vụ cho các báo cáo tài chính và quyết định lãnh đạo.
-- **Thông báo tự động:** Hệ thống có thể gửi thông báo cho người dùng khi có các thay đổi quan trọng trong hệ thống, chẳng hạn như khi lương đã được tính toán hoặc khi có thông tin mới từ quản trị viên.
