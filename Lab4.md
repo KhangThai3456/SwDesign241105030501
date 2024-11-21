@@ -92,4 +92,11 @@
 - **Tiền điều kiện:** Người dùng đã đăng nhập vào hệ thống.
 - **Hậu điều kiện:** Người dùng nhận được thông báo kịp thời về các sự kiện quan trọng.
 
+## 1.1.2. Maintain Timecard
 
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/h9HDJiCm48NtFiM83R2ekky2LL3O1MN11QRnj3MAxMey0N8s5Xo9A-2eAKdR_26noCBs-_ncNYRv_lnQ1a6MmkOAC_4CZtQV-vAeNbwbx5yf4qZGuPOiERa2390cQkqBfv5BU36MCcJzvDcgp3jXd_zkFXpMER6Ah956VbpN3et12WNN6EZWixfNwbWKpEvEt1PWqJY93qYzVNEhseesqPIoWFaSjYIG5SpHiOjkrEqxff2LlgfxI5kTm-paucTw1-y8CYOKqc0sO0Iqf-2k1UZ3186If6NpBxrTHDgFzoPx0BK9-npBIKHNlJlaRMpVQmgzxo5D-lHfCXh8k45l6AVem436oE95ErzmW4tyW6hI5NPD7APFPx7NSGh-E9Zzq50sqwowehaa1v89-DPfCX947pOGGuLCxFrCEjRmUJ5BShhwTohr0m00__y30000)
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/b9IzRi8m481tFyM9gHqe0hOE5MffDoI6li3X725LRAEptOfdwz17wYiqnlahO1I634xkkpj_Tyhlzy_2EcJdLIbGEiFmglQbEH3Lnz6QpGT91olKc9CYxKQ05jOhiJ5UPyW7U2yKIUJipR0IqcZ7fcnVliHpIImgjd1TU7EkAtG5bkXmWvPYdUMp44rJC7xwL-qHfWymcO32Ghlg0LT_lBiN_RW-rpKKwCZdv41wvghufHGTqayKyK49O9neu9I1IhbaGaUWwUjY0sSAJdCaRzuOcnrRpWgxB_5mkx9vT-CTSauWJKOsgIjCC6BJ51X2qefwiGE5z8ahknCzLEggB3lZsS8sw8-qzcf3R0TQcTMNy_iipEw67PgrEvHcasxQjObiDipF6NN5KHosnS-BZLrJqimxnQQ4p5iXWHnYuLZ1UYd9sgqlXqauXHQai_0N_0C00F__0m00)
+
+## **Tổng quan hệ thống**
+- Hệ thống quản lý bảng chấm công (Timecard System) cho phép nhân viên nhập liệu, chỉnh sửa và lưu trữ dữ liệu về số giờ làm việc. Các tác vụ được thực hiện thông qua các thành phần hệ thống như TimecardForm, TimecardController, và ProjectManagementDatabase.
