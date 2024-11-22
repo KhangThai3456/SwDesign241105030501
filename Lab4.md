@@ -99,4 +99,93 @@
 ![Use Case Diagram](https://www.planttext.com/api/plantuml/png/b9IzRi8m481tFyM9gHqe0hOE5MffDoI6li3X725LRAEptOfdwz17wYiqnlahO1I634xkkpj_Tyhlzy_2EcJdLIbGEiFmglQbEH3Lnz6QpGT91olKc9CYxKQ05jOhiJ5UPyW7U2yKIUJipR0IqcZ7fcnVliHpIImgjd1TU7EkAtG5bkXmWvPYdUMp44rJC7xwL-qHfWymcO32Ghlg0LT_lBiN_RW-rpKKwCZdv41wvghufHGTqayKyK49O9neu9I1IhbaGaUWwUjY0sSAJdCaRzuOcnrRpWgxB_5mkx9vT-CTSauWJKOsgIjCC6BJ51X2qefwiGE5z8ahknCzLEggB3lZsS8sw8-qzcf3R0TQcTMNy_iipEw67PgrEvHcasxQjObiDipF6NN5KHosnS-BZLrJqimxnQQ4p5iXWHnYuLZ1UYd9sgqlXqauXHQai_0N_0C00F__0m00)
 
 ## **Tổng quan hệ thống**
-- Hệ thống quản lý bảng chấm công (Timecard System) cho phép nhân viên nhập liệu, chỉnh sửa và lưu trữ dữ liệu về số giờ làm việc. Các tác vụ được thực hiện thông qua các thành phần hệ thống như TimecardForm, TimecardController, và ProjectManagementDatabase.
+Hệ thống quản lý bảng chấm công (Timecard System) được thiết kế để hỗ trợ nhân viên nhập liệu, chỉnh sửa và lưu trữ dữ liệu về số giờ làm việc. Các chức năng chính được thực hiện thông qua các thành phần hệ thống như:
+- **TimecardForm:** Giao diện để nhân viên tương tác, nhập thông tin.
+- **TimecardController:** Bộ điều khiển xử lý logic nghiệp vụ.
+- **ProjectManagementDatabase:** Cơ sở dữ liệu quản lý thông tin dự án.
+
+---
+
+## **Biểu đồ**
+### **Sequence Diagram**
+Biểu đồ trình tự dưới đây mô tả luồng hoạt động chính trong hệ thống khi nhân viên duy trì bảng chấm công.
+
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/h9HDJiCm48NtFiM83R2ekky2LL3O1MN11QRnj3MAxMey0N8s5Xo9A-2eAKdR_26noCBs-_ncNYRv_lnQ1a6MmkOAC_4CZtQV-vAeNbwbx5yf4qZGuPOiERa2390cQkqBfv5BU36MCcJzvDcgp3jXd_zkFXpMER6Ah956VbpN3et12WNN6EZWixfNwbWKpEvEt1PWqJY93qYzVNEhseesqPIoWFaSjYIG5SpHiOjkrEqxff2LlgfxI5kTm-paucTw1-y8CYOKqc0sO0Iqf-2k1UZ3186If6NpBxrTHDgFzoPx0BK9-npBIKHNlJlaRMpVQmgzxo5D-lHfCXh8k45l6AVem436oE95ErzmW4tyW6hI5NPD7APFPx7NSGh-E9Zzq50sqwowehaa1v89-DPfCX947pOGGuLCxFrCEjRmUJ5BShhwTohr0m00__y30000)
+
+### **Mô tả luồng trình tự**
+- Nhân viên chọn chức năng "Maintain Timecard".
+- Hệ thống kiểm tra và hiển thị bảng chấm công hiện tại (nếu chưa có thì tạo mới).
+- Nhân viên nhập số giờ làm việc theo từng mã dự án (charge codes).
+- Dữ liệu được lưu trữ vào cơ sở dữ liệu thông qua bộ điều khiển.
+
+---
+
+## **Use Case Diagram**
+Biểu đồ ca sử dụng dưới đây mô tả các tác vụ chính trong hệ thống.
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/b9IzRi8m481tFyM9gHqe0hOE5MffDoI6li3X725LRAEptOfdwz17wYiqnlahO1I634xkkpj_Tyhlzy_2EcJdLIbGEiFmglQbEH3Lnz6QpGT91olKc9CYxKQ05jOhiJ5UPyW7U2yKIUJipR0IqcZ7fcnVliHpIImgjd1TU7EkAtG5bkXmWvPYdUMp44rJC7xwL-qHfWymcO32Ghlg0LT_lBiN_RW-rpKKwCZdv41wvghufHGTqayKyK49O9neu9I1IhbaGaUWwUjY0sSAJdCaRzuOcnrRpWgxB_5mkx9vT-CTSauWJKOsgIjCC6BJ51X2qefwiGE5z8ahknCzLEggB3lZsS8sw8-qzcf3R0TQcTMNy_iipEw67PgrEvHcasxQjObiDipF6NN5KHosnS-BZLrJqimxnQQ4p5iXWHnYuLZ1UYd9sgqlXqauXHQai_0N_0C00F__0m00)
+
+### **Mô tả các ca sử dụng**
+- **Maintain Timecard:** Nhân viên có thể tạo, sửa đổi và lưu bảng chấm công.
+- **Enter Hours for Charge Numbers:** Nhập số giờ làm việc ứng với từng mã dự án.
+- **Save Timecard:** Lưu thông tin bảng chấm công vào cơ sở dữ liệu.
+
+---
+
+## **Mô tả chi tiết các ca sử dụng**
+### **Maintain Timecard**
+#### **Mô tả**
+Chức năng cho phép nhân viên duy trì bảng chấm công của họ, bao gồm tạo mới, hiển thị hoặc chỉnh sửa bảng chấm công hiện tại.
+
+#### **Các bước thực hiện**
+- Nhân viên truy cập giao diện bảng chấm công (TimecardForm).
+- Hệ thống kiểm tra bảng chấm công hiện tại:
+   + Nếu có, hiển thị bảng chấm công.
+   + Nếu chưa có, tạo bảng chấm công mới.
+3. Hệ thống hiển thị các mã dự án (charge codes) từ cơ sở dữ liệu.
+
+#### **Tại sao thiết kế như vậy?**
+- Tính năng tạo bảng chấm công mới tự động giúp người dùng giảm bớt thao tác thủ công.
+- Cách thức hiển thị các mã dự án đảm bảo dữ liệu đồng nhất với cơ sở dữ liệu.
+
+---
+
+## **Enter Hours for Charge Numbers**
+### **Mô tả**
+Nhân viên nhập số giờ làm việc cho từng mã dự án.
+
+### **Các bước thực hiện**
+1. Nhân viên chọn mã dự án (charge code).
+2. Nhập số giờ làm việc vào từng mục tương ứng.
+3. Hệ thống kiểm tra và cập nhật bảng chấm công.
+
+### **Tại sao thiết kế như vậy?**
+- Đảm bảo dữ liệu nhập vào chính xác và gắn liền với từng mã dự án, phù hợp với cấu trúc cơ sở dữ liệu.
+
+---
+
+## **3.3. Save Timecard**
+### **Mô tả**
+Nhân viên lưu thông tin bảng chấm công vào cơ sở dữ liệu.
+
+### **Các bước thực hiện**
+1. Hệ thống kiểm tra dữ liệu đã nhập.
+2. Lưu bảng chấm công vào **ProjectManagementDatabase**.
+3. Xác nhận lưu thành công và thông báo cho người dùng.
+
+### **Tại sao thiết kế như vậy?**
+- Quy trình lưu giữ liệu được đảm bảo qua các bước kiểm tra nhằm giảm thiểu lỗi dữ liệu trong cơ sở dữ liệu.
+
+---
+
+## **Lý do thiết kế**
+- **Tính rõ ràng và đơn giản:**
+   + Các thành phần được chia nhỏ theo chức năng giúp dễ dàng bảo trì và nâng cấp hệ thống.
+- **Tính nhất quán:**
+   + Dữ liệu liên quan đến bảng chấm công được quản lý tập trung thông qua `TimecardController` và cơ sở dữ liệu.
+- **Tăng hiệu suất làm việc:**
+   + Tự động hóa các tác vụ (như tạo bảng chấm công mới) giúp tiết kiệm thời gian cho nhân viên.
+
+## 1.1.3. Run Payroll
+
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/T5DBJiCm4Dtx55ws4hq02rGr0gchMWeNCCwKMl5FzWGfPsF1aRW2CtKIDGMoQ3JllVcycVJxysjVK6SSl1FQOCoo7Gk2RrmqlTH5jirl_1WGybaRg8BZf7ZsoSKHO0fLjgoReeCEVIt1IHm9aQYnDJRfW5BfCKVdcXYGtv1PffgLvjLwC3ftwyGXcuikSChTb7IwBsmkOFerM6TR6L77bUHku5Q8jf6x9_Oh7-LrQPkju8X0rH2MXo1JjK6CQXR25iOxFIxml2eYtm4bJiQa3UT8eeKcwMpwJlfVANNwgmYXD1zWjl0159NRyOnsPd0QGLqddAbfRop8GEn6-pW4N3dZZcJD0otC0ruYpoMqG_b2D_VQEadlP4s_6vAGz4p9lCF4HzZCVRQLhkkivraqMm6kmBLcPpCOt7MGOh5uK_BGybaWTFADBYSnwr3eqxCnoAN7G-LuGRKT9QrIRxAuQUY4sDCl_pj-0000__y30000)
