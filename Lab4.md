@@ -142,7 +142,7 @@ Chức năng cho phép nhân viên duy trì bảng chấm công của họ, bao 
 - Hệ thống kiểm tra bảng chấm công hiện tại:
    + Nếu có, hiển thị bảng chấm công.
    + Nếu chưa có, tạo bảng chấm công mới.
-3. Hệ thống hiển thị các mã dự án (charge codes) từ cơ sở dữ liệu.
+- Hệ thống hiển thị các mã dự án (charge codes) từ cơ sở dữ liệu.
 
 #### **Tại sao thiết kế như vậy?**
 - Tính năng tạo bảng chấm công mới tự động giúp người dùng giảm bớt thao tác thủ công.
@@ -155,30 +155,30 @@ Chức năng cho phép nhân viên duy trì bảng chấm công của họ, bao 
 Nhân viên nhập số giờ làm việc cho từng mã dự án.
 
 ### **Các bước thực hiện**
-1. Nhân viên chọn mã dự án (charge code).
-2. Nhập số giờ làm việc vào từng mục tương ứng.
-3. Hệ thống kiểm tra và cập nhật bảng chấm công.
+- Nhân viên chọn mã dự án (charge code).
+- Nhập số giờ làm việc vào từng mục tương ứng.
+- Hệ thống kiểm tra và cập nhật bảng chấm công.
 
 ### **Tại sao thiết kế như vậy?**
 - Đảm bảo dữ liệu nhập vào chính xác và gắn liền với từng mã dự án, phù hợp với cấu trúc cơ sở dữ liệu.
 
 ---
 
-## **3.3. Save Timecard**
+## **Save Timecard**
 ### **Mô tả**
 Nhân viên lưu thông tin bảng chấm công vào cơ sở dữ liệu.
 
 ### **Các bước thực hiện**
-1. Hệ thống kiểm tra dữ liệu đã nhập.
-2. Lưu bảng chấm công vào **ProjectManagementDatabase**.
-3. Xác nhận lưu thành công và thông báo cho người dùng.
+- Hệ thống kiểm tra dữ liệu đã nhập.
+- Lưu bảng chấm công vào **ProjectManagementDatabase**.
+- Xác nhận lưu thành công và thông báo cho người dùng.
 
 ### **Tại sao thiết kế như vậy?**
 - Quy trình lưu giữ liệu được đảm bảo qua các bước kiểm tra nhằm giảm thiểu lỗi dữ liệu trong cơ sở dữ liệu.
 
 ---
 
-## **Lý do thiết kế**
+### **Lý do thiết kế**
 - **Tính rõ ràng và đơn giản:**
    + Các thành phần được chia nhỏ theo chức năng giúp dễ dàng bảo trì và nâng cấp hệ thống.
 - **Tính nhất quán:**
@@ -188,5 +188,439 @@ Nhân viên lưu thông tin bảng chấm công vào cơ sở dữ liệu.
 
 ## 1.1.3. Run Payroll
 
+### **Use Case 1: Xử lý trả lương nhân viên**
+- **Mô tả:** 
+  - Hệ thống bắt đầu quy trình xử lý trả lương theo chu kỳ lặp lại.
+  - Kiểm tra ngày trả lương thông qua `SystemClock`.
+- **Diễn viên:** `SystemClock`, `PayrollController`.
+
+### **Use Case 2: Tạo bảng chấm công**
+- **Mô tả:**
+  - Hệ thống thu thập thông tin chấm công từ nhân viên và lưu vào `Timecard`.
+- **Diễn viên:** `Employee`, `PayrollController`, `Timecard`.
+
+### **Use Case 3: Tính toán tiền lương**
+- **Mô tả:**
+  - Hệ thống sử dụng thông tin từ `Timecard` và `PurchaseOrder` để tính toán tiền lương.
+- **Diễn viên:** `PayrollController`, `Timecard`, `PurchaseOrder`.
+
+### **Use Case 4: Gửi lương qua chuyển khoản ngân hàng**
+- **Mô tả:**
+  - Xác định phương thức thanh toán của nhân viên và thực hiện giao dịch với `BankSystem`.
+- **Diễn viên:** `PayrollController`, `BankSystem`.
+
+### **Use Case 5: In phiếu lương**
+- **Mô tả:**
+  - Nếu phương thức thanh toán là nhận phiếu lương trực tiếp hoặc qua thư, hệ thống sẽ in phiếu qua `PrinterInterface`.
+- **Diễn viên:** `PrinterInterface`, `PayrollController`.
+
+---
+
+## Thiết kế chi tiết
+### Sơ đồ tuần tự
+Hệ thống được mô tả thông qua sơ đồ tuần tự dưới đây:
+
 ![Sequence Diagram](https://www.planttext.com/api/plantuml/png/T5DBJiCm4Dtx55ws4hq02rGr0gchMWeNCCwKMl5FzWGfPsF1aRW2CtKIDGMoQ3JllVcycVJxysjVK6SSl1FQOCoo7Gk2RrmqlTH5jirl_1WGybaRg8BZf7ZsoSKHO0fLjgoReeCEVIt1IHm9aQYnDJRfW5BfCKVdcXYGtv1PffgLvjLwC3ftwyGXcuikSChTb7IwBsmkOFerM6TR6L77bUHku5Q8jf6x9_Oh7-LrQPkju8X0rH2MXo1JjK6CQXR25iOxFIxml2eYtm4bJiQa3UT8eeKcwMpwJlfVANNwgmYXD1zWjl0159NRyOnsPd0QGLqddAbfRop8GEn6-pW4N3dZZcJD0otC0ruYpoMqG_b2D_VQEadlP4s_6vAGz4p9lCF4HzZCVRQLhkkivraqMm6kmBLcPpCOt7MGOh5uK_BGybaWTFADBYSnwr3eqxCnoAN7G-LuGRKT9QrIRxAuQUY4sDCl_pj-0000__y30000)
 
+---
+
+### Lý do thiết kế
+
+- **Tách biệt trách nhiệm rõ ràng:**
+   + Mỗi thành phần đảm nhiệm một nhiệm vụ riêng, giúp hệ thống dễ bảo trì và phát triển.
+- **Hỗ trợ mở rộng:**
+   + Có thể dễ dàng thêm các phương thức thanh toán hoặc thay đổi quy trình trả lương.
+- **Tự động hóa:**
+   + Sử dụng `SystemClock` để tự động kích hoạt quy trình trả lương theo chu kỳ.
+
+---
+
+### Lợi ích của thiết kế
+
+- **Tính linh hoạt:** 
+   + Cho phép tích hợp với các hệ thống ngân hàng hoặc phần mềm quản lý nhân sự khác.
+- **Tính nhất quán và chính xác:**
+   + Các thành phần hoạt động đồng bộ, giảm thiểu sai sót khi tính toán và xử lý trả lương.
+- **Khả năng mở rộng:** 
+   + Dễ dàng thêm các chức năng mới mà không ảnh hưởng đến các thành phần hiện có.
+
+## Sơ đồ tuần tự
+
+Hệ thống được biểu diễn qua sơ đồ tuần tự sau:
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/Z5GxRiCm3Drr2eu9q5p0GniqwD0f0TeBA19J2z77a6WKFbk77gbNA1L_uYPA4GysABxtz4XH_ldwNYUIaLfdXLGK8hnrYT1jR537OUN5DJPqY4EuYyOJnY5wblxOKuHGmLCCTYxncg47gN1AxcJ77xlfGyj2KwONlgRCzq1FXhgiecfaYqFyRXmg6VMKRwEgPS9jrBo3c3c2rMFHO0MdHYoMefJDh2ld5SJMGzClC_4AS7ilap9Fo-xf5c_iUWKVI413VM3y8J1bp6RaM7iPUOVuRbkI_TF2Is1HjT0W9QrghIJat3-qqraoEY93uTDG3TA5rjDz1N0h7HyyEAGwwFiuUnwgiHeXBMKR9v5z1quQ2ppSZL77LTi8uATi_M9aAsZooc8iQTbJBr0pvaXO2hG9vnwqYQW8D3OX6RfjuNmvU8BHwxumYj8dlg4c-CdCmxdctjUPMXIQQx0_huLOypl_Adu1003__mC0)
+
+---
+
+## Mô tả luồng hoạt động
+
+### **Khởi động hệ thống**
+- **Actor:** `SystemClock`.
+- **Mô tả:** `SystemClock` khởi động hệ thống và chuyển điều khiển đến `SystemClockInterface`.
+
+### **Kiểm tra ngày trả lương**
+- **Actor:** `SystemClockInterface`, `PayrollController`.
+- **Mô tả:** `PayrollController` sử dụng `SystemClockInterface` để xác định xem hôm nay có phải ngày trả lương không.
+
+### **Lấy dữ liệu nhân viên**
+- **Actor:** `PayrollController`, `Employee`.
+- **Mô tả:** `PayrollController` thu thập thông tin chấm công và đơn hàng từ nhân viên thông qua các đối tượng `Timecard` và `PurchaseOrder`.
+
+### **Tính toán lương**
+- **Actor** `PayrollController`.
+- **Mô tả:** Dựa trên dữ liệu chấm công và đơn hàng, `PayrollController` tính toán tổng lương của nhân viên.
+
+### **Tạo phiếu lương**
+- **Actor:** `PayrollController`, `Paycheck`.
+- **Mô tả:** Phiếu lương được tạo ra với số tiền tương ứng.
+
+### **Thực hiện thanh toán**
+- **Tùy chọn 1:** Gửi lương qua ngân hàng
+  - **Actor:** `PayrollController`, `BankSystem`.
+  - **Mô tả:** Gửi giao dịch lương đến hệ thống ngân hàng dựa trên thông tin tài khoản của nhân viên.
+- **Tùy chọn 2:** In phiếu lương
+  - **Actor:** `PayrollController`, `PrinterInterface`.
+  - **Mô tả:** In phiếu lương và chuyển đến nhân viên qua bưu điện hoặc nhận trực tiếp.
+
+---
+
+## Lý do thiết kế
+
+- **Phân tách rõ ràng trách nhiệm:**
+   + Các thành phần được chia nhỏ, đảm bảo mỗi phần chỉ thực hiện một nhiệm vụ cụ thể.
+- **Tích hợp linh hoạt:**
+   + Hỗ trợ cả hai phương thức thanh toán (chuyển khoản và in phiếu).
+- **Tự động hóa quy trình:**
+   + Sử dụng `SystemClock` để tự động khởi động và kiểm tra thời gian.
+
+---
+
+## Lợi ích của thiết kế
+
+- **Tính linh hoạt:**
+   + Dễ dàng mở rộng hệ thống bằng cách thêm phương thức thanh toán hoặc sửa đổi quy trình tính lương.
+- **Tự động hóa:**
+   + Hệ thống tự động kích hoạt và xử lý trả lương mà không cần can thiệp thủ công.
+- **Khả năng bảo trì:**
+   + Phân tách trách nhiệm giúp dễ dàng sửa lỗi và cải tiến các thành phần riêng lẻ.
+
+## 1.2. Use-Case Realization View of Participating Classes (VOCPs)
+
+## 1.2.1. Login
+
+### Mô tả
+Chức năng đăng nhập là một trong những tính năng cơ bản của bất kỳ hệ thống phần mềm nào, giúp xác thực người dùng trước khi cho phép truy cập. Thành phần chính trong chức năng đăng nhập là lớp `LoginForm`, có nhiệm vụ thu thập thông tin từ người dùng và xác thực.
+
+### Mục tiêu
+- Bảo mật hệ thống bằng cách cho phép truy cập chỉ những người dùng hợp lệ.
+- Đảm bảo trải nghiệm người dùng thân thiện, nhanh chóng.
+
+---
+
+## Sơ đồ lớp LoginForm
+
+Hệ thống được thiết kế với lớp `LoginForm` có vai trò chính trong chức năng đăng nhập. Sơ đồ lớp được thể hiện dưới đây:
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bToJc9niO9FVdfcdbj-KQv2DPS24DZO9EMNvgKa5bNQsO4551HIyqfIYqABKulo4dDJ7VDI0e3wolEBKZGqeGhA4dCoKn9BKh6hgULoICrB0Ta80000__y30000)
+
+## Luồng hoạt động
+
+### Mô tả luồng chính
+- Người dùng truy cập vào giao diện đăng nhập.
+- Nhập tên đăng nhập và mật khẩu vào lớp `LoginForm`.
+- Gọi phương thức `enterUsernameAndPassword()` để thu thập dữ liệu người dùng.
+- Hệ thống gọi phương thức `validateUsernameAndPassword()` để xác thực thông tin:
+   + Nếu thông tin hợp lệ: Người dùng được cấp quyền truy cập.
+   + Nếu thông tin không hợp lệ: Hiển thị thông báo lỗi và yêu cầu nhập lại.
+
+---
+
+## Lý do thiết kế
+
+- **Phân tách rõ ràng trách nhiệm:**
+   + Lớp `LoginForm` tập trung vào giao diện và xử lý đăng nhập cơ bản.
+- **Tính bảo trì:**
+   + Dễ dàng mở rộng và chỉnh sửa các chức năng liên quan đến đăng nhập.
+- **Khả năng tái sử dụng:**
+   + Lớp `LoginForm` có thể tái sử dụng trong các ứng dụng khác có chức năng đăng nhập.
+
+---
+
+## Phạm vi mở rộng
+
+- **Tích hợp cơ sở dữ liệu người dùng:**
+  + Kết nối lớp `LoginForm` với cơ sở dữ liệu để xác thực thông tin đăng nhập thực tế.
+- **Xác thực nâng cao:**
+  + Bổ sung chức năng xác thực đa yếu tố (MFA) để tăng cường bảo mật.
+- **Ghi nhật ký đăng nhập:**
+  + Ghi lại các lần đăng nhập thành công và thất bại để phân tích bảo mật.
+
+## 1.2.2. Maintain Timecard
+
+### Mô tả
+Hệ thống quản lý Timecard hỗ trợ việc lưu trữ, cập nhật và xử lý thông tin chấm công của nhân viên. Chức năng này bao gồm việc nhập số giờ làm, lấy mã công việc (charge codes), và lưu thông tin timecard để sử dụng trong tính lương và báo cáo.
+
+### Mục tiêu
+- Đơn giản hóa quy trình quản lý timecard của nhân viên.
+- Đảm bảo tính chính xác và hiệu quả trong việc ghi nhận thời gian làm việc.
+- Hỗ trợ tích hợp dữ liệu với các hệ thống khác như tính lương và quản lý dự án.
+
+---
+## Sơ đồ lớp
+
+Hệ thống được biểu diễn qua sơ đồ lớp sau:
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/b9FDRjGm4CVlUGfhBuLAhU2AgbLX0L6XLYiLYLudzh0nzKSOsqXHnRa7JZrpwXFm03bmA2-I9-0LS7OJRx9Bf19fbUoCP-OtCt__gN-TEW_aWrRP0NjVW6Jvmxrb_E6UCzNKFyeiumgSOn-aHWuatbhIx2PZyJavoMqm0gYQpzS6neHqfOAgF_paQMUt9Phq1ur7UcS3kPXiKG2jy2Be7Ccb8ngayV6tbyZ1LnmOl-tYBQpnP9L2If1yOqgCA_IBG1GfzhAthZNFmWhSqeHIWCV_Paa4iPJqso4LRUiVBLsZw2mbL4iaQSKWyn2gptXcFjbfgWJmHfVALeXJ00OqzhleZfxrfNCmrssPdiHo2UeIUQ2OOREcpWL243hNjr1OWoC_nYMgROCwGfoZBrAJqYsX4b0D6usMbpgAokyOjy53nwkETRI_YTLoK3oeEB3bkcAQrPBiP-J-70oii2tp6Zpau71Qv7igYSaEs5LxPNxVDVLtKp3Tr7UIVGbWMD7Kjsmbc_edZAxLw4BDdi_OqT5y_TwNSlOFTS-U7H_tGPlFoKuU5vvK-uBnyGnJ_6xKuIn9BViB003__mC0)
+
+## Chi tiết thiết kế
+
+### Các lớp và chức năng chính
+
+#### **TimecardForm**
+- **Loại:** `<<boundary>>`
+- **Vai trò:** Giao diện để người dùng thao tác với timecard.
+- **Phương thức:**
+  - `displayTimecard()`: Hiển thị thông tin timecard hiện tại.
+  - `open()`: Mở form nhập liệu cho timecard.
+  - `enterHoursForChargeNumbers()`: Nhập số giờ làm việc dựa trên mã công việc.
+  - `maintainTimecard()`: Thực hiện duy trì hoặc chỉnh sửa timecard.
+  - `saveTimecard()`: Lưu thông tin timecard sau khi chỉnh sửa.
+
+#### **TimecardController**
+- **Loại:** `<<control>>`
+- **Vai trò:** Điều khiển logic liên quan đến timecard.
+- **Phương thức:**
+  - `getCurrentTimecard()`: Lấy thông tin timecard hiện tại.
+  - `getChargeCodes()`: Lấy danh sách mã công việc từ cơ sở dữ liệu.
+  - `updateTimecard()`: Cập nhật thông tin timecard.
+  - `saveTimecard()`: Lưu timecard sau khi chỉnh sửa hoặc thêm mới.
+
+#### **Timecard**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Lưu trữ thông tin về timecard của nhân viên.
+- **Thuộc tính:**
+  - `hoursWorked`: Tổng số giờ làm việc.
+  - `payPeriod`: Kỳ tính lương liên quan đến timecard.
+- **Phương thức:**
+  - `save()`: Lưu thông tin timecard vào cơ sở dữ liệu.
+  - `getTimecardInfo()`: Lấy dữ liệu timecard.
+  - `updateTimecard()`: Cập nhật thông tin trong timecard.
+
+#### **Employee**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Lưu trữ thông tin của nhân viên liên quan đến timecard.
+- **Thuộc tính:**
+  - `name`: Tên nhân viên.
+  - `employeeId`: Mã nhân viên.
+  - `bankInfo`: Thông tin ngân hàng.
+  - `socialSecurityNumber`: Số bảo hiểm xã hội.
+  - `address`: Địa chỉ nhân viên.
+  - `phoneNumber`: Số điện thoại.
+  - `email`: Địa chỉ email.
+  - `paymentMethod`: Phương thức thanh toán.
+- **Phương thức:**
+  - `isPayday()`: Xác định ngày trả lương.
+  - `getPayAmount()`: Lấy số tiền lương.
+  - `getPaymentMethod()`: Lấy phương thức thanh toán.
+  - `getBankInfo()`: Lấy thông tin ngân hàng.
+  - `getCurrentTimecard()`: Lấy timecard hiện tại.
+  - `calculatePay()`: Tính toán lương dựa trên timecard.
+
+#### **ProjectManagementDatabase**
+- **Loại:** `<<boundary>>`
+- **Vai trò:** Cung cấp dữ liệu mã công việc (charge codes) từ hệ thống quản lý dự án.
+- **Phương thức:**
+  - `getChargeCodes()`: Lấy danh sách mã công việc.
+
+---
+
+## Lý do thiết kế
+
+- **Phân tách trách nhiệm rõ ràng:**
+   + Lớp `TimecardForm` tập trung vào giao diện, trong khi `TimecardController` xử lý logic và tương tác với dữ liệu.
+- **Tính tái sử dụng:**
+   + Lớp `Timecard` và `Employee` có thể được sử dụng lại trong các module khác (tính lương, báo cáo).
+- **Tích hợp dễ dàng:**
+   + Lớp `ProjectManagementDatabase` cho phép tích hợp với hệ thống quản lý dự án, đảm bảo sự linh hoạt.
+
+---
+
+## Lợi ích của thiết kế
+
+- **Hiệu quả:** Quản lý thông tin timecard một cách rõ ràng và có tổ chức.
+- **Mở rộng:** Dễ dàng bổ sung thêm chức năng, ví dụ: báo cáo timecard, đồng bộ hóa dữ liệu.
+- **Bảo trì:** Các thành phần được tách biệt giúp việc sửa lỗi và nâng cấp dễ dàng hơn.
+
+---
+
+## Phạm vi mở rộng
+
+- **Tích hợp API bên thứ ba:** Kết nối với hệ thống quản lý chấm công tự động.
+- **Xác thực dữ liệu:** Thêm các bước xác minh thông tin trước khi lưu timecard.
+- **Báo cáo:** Tạo báo cáo tổng hợp giờ làm và năng suất dựa trên timecard.
+
+## 1.2.3. Run Payroll
+
+### Mô tả
+Hệ thống trả lương được thiết kế để quản lý và xử lý việc tính toán lương cho nhân viên dựa trên thông tin chấm công, hình thức thanh toán và loại nhân viên (lương cố định, theo giờ hoặc hoa hồng). Hệ thống bao gồm các thành phần chính như xử lý phiếu lương, in ấn, và thanh toán qua ngân hàng.
+
+### Mục tiêu
+- Đảm bảo việc trả lương chính xác và hiệu quả.
+- Hỗ trợ nhiều loại nhân viên với các phương thức thanh toán khác nhau.
+- Tích hợp dễ dàng với hệ thống in và ngân hàng.
+
+---
+
+## Sơ đồ lớp
+
+Hệ thống được biểu diễn qua sơ đồ lớp sau:
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/Z5JBRXCn5DtxAwni6X2fO5j54IL2QeMW4Qa4snlFRSUA7y6FYX6mPi6gQpRqEx9WKNuaNy0luCdCU3oJb2QRUCvzdNjzhl-kVx-q3eppKf0Z-YO7JXVtTvgo-pj6nMRzSqLlxdzHkLdVSlh9WwBvPlsT42R0MZelh4Cv5PejpvL3SmKCwHT2msyyNcYlCZ35PB85ADqM6ZuXtvhm6HH62p7LofN_Q68igw0OQhogdTFurt8bT85jILIEkxQW0edr4MlNywm65g02volTSDECWvWZyoPaUEVb0arjWYmpQ6tzjSgrmeuT9N3HMA6GWSHRTBbkAd4Rg6TG1EOLS8qk8ASopCVrm3OuDRogkQROr1iJd2-vH0QcTMSWc1VWSBQj66VLE3uqgrnxOpzeiyIixMM6XiS-BDnWog39s67cLrcedR1ABvlbo9OF4O3jF9ek38OqmmfBanXUwkm0iQrApxH-ESHAh_zHAAgizBiqe2mmnxKQkXmZzPFOnJCQyEPU0ZvteTvrojGRbeF52vCbkkxrN5xwHJs_67aMRa8KKTlusGLMEsAlRamKxyESscnd4Kippa60uPWzdXEKyc4DIl-YpNgQe6dUgPQIMnkcT4Xk5hsxdASTlBCGwGnjLVc8VYoVfZ-tc_KFbLVlLFzrslii3LuCw6WqeOFdnyVXkFFsaDtNg7PjefuEObEFEuTZNBaJohhRUb2jH7NNgD24uMGDPWyYqD-MWuBQFI4atk6WIots4Ht6NqUZdd9xnhu8U-PzMY9ahy9wP3eg8N7ejNNFGCa_0000__y30000)
+
+---
+
+## Chi tiết thiết kế
+
+### Các lớp và chức năng chính
+
+#### **SystemClockInterface**
+- **Loại:** `<<boundary>>`
+- **Vai trò:** Khởi động quy trình xử lý bảng lương.
+- **Phương thức:**
+  - `start()`: Bắt đầu quy trình xử lý bảng lương.
+
+#### **PayrollController**
+- **Loại:** `<<control>>`
+- **Vai trò:** Điều phối toàn bộ quy trình xử lý bảng lương.
+- **Phương thức:**
+  - `runPayroll()`: Chạy quy trình xử lý bảng lương, bao gồm tính toán và phát lương.
+
+#### **Employee**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Lưu trữ thông tin nhân viên.
+- **Thuộc tính:**
+  - `name`: Tên nhân viên.
+  - `employeeId`: Mã nhân viên.
+  - `bankInfo`: Thông tin ngân hàng.
+  - `socialSecurityNumber`: Số bảo hiểm xã hội.
+  - `address`: Địa chỉ nhân viên.
+  - `phoneNumber`: Số điện thoại.
+  - `email`: Địa chỉ email.
+  - `paymentMethod`: Phương thức thanh toán.
+- **Phương thức:**
+  - `isPayday()`: Kiểm tra ngày trả lương.
+  - `getPayAmount()`: Lấy số tiền lương.
+  - `getPaymentMethod()`: Lấy phương thức thanh toán.
+  - `getBankInfo()`: Lấy thông tin ngân hàng.
+  - `getCurrentTimecard()`: Lấy thông tin timecard hiện tại.
+  - `calculatePay()`: Tính lương dựa trên thông tin timecard.
+
+#### **Timecard**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Lưu trữ thông tin chấm công.
+- **Thuộc tính:**
+  - `hoursWorked`: Số giờ làm việc.
+  - `payPeriod`: Kỳ lương.
+- **Phương thức:**
+  - `save()`: Lưu thông tin timecard.
+  - `getTimecardInfo()`: Lấy thông tin từ timecard.
+  - `updateTimecard()`: Cập nhật thông tin timecard.
+
+#### **Paycheck**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Đại diện cho phiếu lương.
+- **Thuộc tính:**
+  - `amount`: Số tiền lương.
+- **Phương thức:**
+  - `create(amount)`: Tạo phiếu lương với số tiền lương cụ thể.
+
+#### **PrinterInterface**
+- **Loại:** `<<boundary>>`
+- **Vai trò:** In phiếu lương.
+- **Phương thức:**
+  - `print()`: In phiếu lương cho nhân viên.
+
+#### **BankSystem**
+- **Loại:** `<<boundary>>`
+- **Vai trò:** Xử lý thanh toán qua ngân hàng.
+- **Phương thức:**
+  - `sendBankTransaction(thePaycheck : Paycheck, theBankInfo : String)`: Gửi giao dịch thanh toán lương qua ngân hàng.
+
+#### **PurchaseOrder**
+- **Loại:** `<<entity>>`
+- **Vai trò:** Đại diện cho các đơn hàng, liên quan đến nhân viên hưởng hoa hồng.
+- **Phương thức:**
+  - `getPOInfo()`: Lấy thông tin đơn hàng.
+
+#### **Các lớp kế thừa từ Employee**
+- **HourlyEmployee**
+  - **Thuộc tính:** `hourlyRate` - Lương theo giờ.
+  - **Phương thức:** `getHourlyRate()`: Lấy mức lương theo giờ.
+- **SalariedEmployee**
+  - **Thuộc tính:** `annualSalary` - Lương cố định hàng năm.
+  - **Phương thức:** `getAnnualSalary()`: Lấy mức lương cố định hàng năm.
+- **CommissionedEmployee**
+  - **Thuộc tính:** `commissionRate` - Tỷ lệ hoa hồng.
+  - **Phương thức:**
+    - `getCommissionRate()`: Lấy tỷ lệ hoa hồng.
+    - `getPurchaseOrders()`: Lấy danh sách đơn hàng.
+
+---
+
+## Lý do thiết kế
+
+- **Phân tách trách nhiệm rõ ràng:**
+   + Lớp `PayrollController` chịu trách nhiệm điều phối các hoạt động, trong khi các lớp khác tập trung vào nhiệm vụ cụ thể.
+- **Hỗ trợ đa dạng nhân viên:**
+   + Các lớp con của `Employee` cho phép hệ thống xử lý nhiều loại nhân viên (lương cố định, theo giờ, hoa hồng).
+- **Tích hợp dễ dàng:**
+   + Các lớp biên giới (`PrinterInterface`, `BankSystem`) hỗ trợ tích hợp với hệ thống in và ngân hàng.
+
+---
+
+## Phạm vi mở rộng
+
+- **Báo cáo lương:** Tích hợp thêm lớp xử lý báo cáo tổng hợp về lương.
+- **Xác thực nhân viên:** Bổ sung chức năng xác thực danh tính trước khi tạo phiếu lương.
+- **API ngân hàng:** Hỗ trợ nhiều giao diện API để kết nối với các ngân hàng khác nhau.
+
+## 1.3. Analysis-Class-To-Analysis-Mechanism Map
+
+## 3. Giải thích cơ chế phân tích
+
+### 3.1. Persistency
+- **Định nghĩa:** Lưu trữ và quản lý dữ liệu dài hạn để đảm bảo tính nhất quán và khôi phục dữ liệu khi cần.
+- **Áp dụng cho:** 
+  - `CommissionedEmployee`, `Employee`, `HourlyEmployee`, `SalariedEmployee`: Lưu trữ thông tin nhân viên và dữ liệu liên quan.
+  - `Paycheck`, `PurchaseOrder`, `Timecard`: Lưu trữ phiếu lương, đơn hàng và thông tin chấm công.
+
+### 3.2. Security
+- **Định nghĩa:** Bảo vệ dữ liệu nhạy cảm và đảm bảo quyền truy cập.
+- **Áp dụng cho:**
+  - `CommissionedEmployee`, `Employee`, `HourlyEmployee`, `SalariedEmployee`: Đảm bảo an toàn dữ liệu nhân viên, bao gồm thông tin cá nhân và tài khoản ngân hàng.
+
+### 3.3. Distribution
+- **Định nghĩa:** Hỗ trợ phân tán chức năng hoặc dữ liệu trên nhiều thành phần trong hệ thống.
+- **Áp dụng cho:**
+  - `PayrollController`: Điều phối quá trình xử lý lương giữa các thành phần.
+  - `TimecardController`: Phân phối thông tin chấm công và liên kết với các thành phần khác.
+
+### 3.4. Legacy Interface
+- **Định nghĩa:** Tích hợp với hệ thống cũ để kế thừa dữ liệu và chức năng.
+- **Áp dụng cho:**
+  - `BankSystem`: Tích hợp với hệ thống ngân hàng hiện có.
+  - `ProjectManagementDatabase`: Tích hợp với hệ thống quản lý dự án cũ.
+
+### 3.5. None
+- **Định nghĩa:** Không yêu cầu cơ chế phân tích đặc biệt.
+- **Áp dụng cho:**
+  - `LoginForm`, `PrinterInterface`, `TimecardForm`, `SystemClockInterface`: Các thành phần này thực hiện nhiệm vụ đơn giản, không liên quan đến lưu trữ, bảo mật hoặc phân tán.
+
+---
+
+## 4. Lợi ích của phân tích
+
+- **Tính rõ ràng:** Mỗi lớp được gắn cơ chế phù hợp, giúp dễ hiểu và dễ bảo trì.
+- **Tính bảo mật:** Các lớp liên quan đến dữ liệu nhạy cảm đều được đảm bảo an toàn.
+- **Khả năng mở rộng:** Cơ chế phân tích như `Persistency` và `Distribution` đảm bảo hệ thống dễ dàng mở rộng khi cần.
+- **Tích hợp liền mạch:** Các lớp như `BankSystem` và `ProjectManagementDatabase` hỗ trợ tích hợp với hệ thống cũ, giảm thiểu rủi ro chuyển đổi.
