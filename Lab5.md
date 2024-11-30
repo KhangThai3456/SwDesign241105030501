@@ -208,3 +208,185 @@ Trong hệ thống Payroll System, các hệ thống con chính bao gồm:
 
 ## 1.1.4 Run Payroll (with OODBMS Persistency)
 
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/R9BDYi8m483lUOgXTm-srkEYYEXbOQcx3p34GOBv8qaFHNmo3_j8-mgRQYmXz3PVycLcCidVutVZ0xhGAycG1-DWUrP2f_ZOfM2lh3G3KS9Fr7WXnvX5VeqHL5yuE2Cbd0OVI5LmOm2z9uu-RhxqAOcl03tyx9QvSqA9Re0TIjvB3CBePDKpcROXa3wZvfIaPaRw5egkH5ReIx9MkNKWJGu3GMpTIs6Jqyuw7LdZmhlnDOlISqwmM7oac-HS5zmKl2guBVXPuDXbsIUeSsXoQCT3xnbdYOkbvQYb1vpAtHdRn8cElu3z0m00__y30000)
+
+## Giải thích
+- Admin có quyền truy cập vào tất cả các chức năng trong hệ thống, từ quản lý nhân viên, tính lương, quản lý ngày công, đến việc tạo báo cáo.
+- HR chủ yếu xử lý các tác vụ liên quan đến nhân viên, tính lương, chấm công và phát hành bảng lương.
+- Employee có thể truy cập và xem bảng lương của mình, cũng như chỉnh sửa thông tin cá nhân.
+- Manager chỉ có quyền xem báo cáo tổng hợp về lương và các chỉ số khác của nhân viên.
+
+## Các chức năng chính trong hệ thống
+
+Hệ thống Payroll System bao gồm các chức năng chính sau đây để quản lý thông tin nhân viên, tính lương và tạo các báo cáo:
+
+### Quản lý nhân viên (Employee Management)
+- **Chức năng**: Thêm, sửa, xóa thông tin nhân viên trong hệ thống.
+- **Mô tả**: Quản lý thông tin cá nhân của nhân viên, bao gồm tên, vị trí công việc, mức lương, ngày vào làm, và các dữ liệu liên quan khác.
+- **Các tác vụ**:
+  - Thêm mới nhân viên.
+  - Cập nhật thông tin nhân viên.
+  - Xóa nhân viên khỏi hệ thống.
+  
+### Tính lương (Salary Calculation)
+- **Chức năng**: Tính toán lương cơ bản, lương thêm giờ, lương thưởng, và các khoản khấu trừ.
+- **Mô tả**: Hệ thống tính toán lương cho từng nhân viên dựa trên các yếu tố như mức lương cơ bản, số giờ làm thêm, các khoản thuế, bảo hiểm và các khoản khấu trừ khác.
+- **Các tác vụ**:
+  - Tính lương cơ bản.
+  - Tính lương thưởng và các khoản phụ cấp.
+  - Tính các khoản khấu trừ như thuế, bảo hiểm xã hội.
+
+### Quản lý ngày công (Attendance Management)
+- **Chức năng**: Theo dõi và quản lý ngày công của nhân viên.
+- **Mô tả**: Quản lý các ngày vắng mặt, phép năm, nghỉ lễ và ngày công của nhân viên để tính toán các yếu tố liên quan đến lương.
+- **Các tác vụ**:
+  - Cập nhật ngày vắng mặt.
+  - Quản lý phép năm.
+  - Theo dõi tình trạng làm việc của nhân viên.
+
+### Quản lý chấm công (Timekeeping)
+- **Chức năng**: Theo dõi giờ làm việc của nhân viên, bao gồm giờ vào và giờ ra.
+- **Mô tả**: Hệ thống ghi lại thời gian vào làm, thời gian nghỉ và thời gian kết thúc ca làm việc của nhân viên.
+- **Các tác vụ**:
+  - Đăng ký giờ vào làm.
+  - Đăng ký giờ ra về.
+  - Quản lý giờ làm thêm.
+
+### Quản lý bảng lương (Payslip Management)
+- **Chức năng**: Tạo và phát hành bảng lương cho nhân viên.
+- **Mô tả**: Hệ thống tạo bảng lương định kỳ cho nhân viên dựa trên kết quả tính lương, sau đó phát hành và lưu trữ bảng lương.
+- **Các tác vụ**:
+  - Tạo bảng lương cho nhân viên.
+  - Phát hành bảng lương.
+  - Lưu trữ bảng lương.
+
+### Quản lý báo cáo (Report Management)
+- **Chức năng**: Xuất các báo cáo tổng hợp liên quan đến lương, thuế, bảo hiểm và các khoản chi phí khác.
+- **Mô tả**: Hệ thống cung cấp các báo cáo chi tiết về chi phí lương, thuế, bảo hiểm, v.v. cho các bộ phận quản lý.
+- **Các tác vụ**:
+  - Xuất báo cáo tổng lương.
+  - Xuất báo cáo thuế và bảo hiểm.
+  - Xuất báo cáo chi phí nhân sự.
+
+---
+
+## Các Actor trong hệ thống
+
+Các actor trong hệ thống Payroll System đại diện cho những người hoặc hệ thống tương tác với hệ thống và thực hiện các chức năng cụ thể.
+
+### Admin
+- **Vai trò**: Quản trị viên hệ thống, có quyền truy cập vào tất cả các chức năng và thông tin trong hệ thống.
+- **Tác vụ chính**:
+  - Quản lý thông tin nhân viên.
+  - Quản lý tính lương, bảng lương và các báo cáo.
+  - Quản lý quyền truy cập và cài đặt hệ thống.
+
+### HR (Human Resources)
+- **Vai trò**: Nhân viên bộ phận nhân sự, chịu trách nhiệm quản lý thông tin nhân viên, tính toán lương và phát hành bảng lương.
+- **Tác vụ chính**:
+  - Thêm, sửa và xóa thông tin nhân viên.
+  - Tính toán và phê duyệt lương.
+  - Quản lý bảng lương và các thông tin liên quan đến nhân viên.
+
+### Employee
+- **Vai trò**: Nhân viên trong công ty, có quyền truy cập vào các thông tin cá nhân và bảng lương của mình.
+- **Tác vụ chính**:
+  - Xem thông tin cá nhân và bảng lương.
+  - Cập nhật các thông tin cá nhân nếu cần thiết.
+
+### Manager
+- **Vai trò**: Quản lý của các bộ phận, có quyền xem các báo cáo tổng hợp về lương và hiệu suất của nhân viên.
+- **Tác vụ chính**:
+  - Xem báo cáo tổng hợp về lương, thuế, và bảo hiểm.
+  - Đánh giá hiệu suất nhân viên dựa trên các báo cáo.
+ 
+## 1.1.5 Run Payroll (with OODBMS Persistency)
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/Z9J1Rk8m48RlUOeHzweDa02NLIbTBKXTTKMfzknDfYZ2iIFRGOrMVR8Uzf7s5TQ0dJeJgFP0b7_oUVu_W-E_xtzkjM7Ar2MFM6QaWdbU5iBTBzVkvcjPSTaWElcT2RP55KKLotRs3WO_MACav_3KQ8Fb07v70Er3lzgjAr6O4m5GQyoOjimyprkN0J0DpukuIpnNEJFOGh0IBzAHmowvnbBkaRORMUZD_i9aJumprS22yQpcp1HIz8BvPmWds7KRNwBkfAYrWv9BqECUbIbA7oqbiwWgti0zvdLsYEIxJSwymDmO53aJsQV3tIZBmmVh6awxrAa1F23Re_US7Jr3nusDlKEi2h7j-Jp8BVoKQWTBMIlV8huv5sR1fRsknFLZRJmOzypijjAyg3vxjsyeK1rcwbZVZEo9-q8RLVog--2evxh6IYhpNwPk0vrM-8xZ2_26lH8okK2kXAxLyL_jygdFUlnAuUhgY_jEGZqaUaJqcEY4w9Je2T5JecSqpmqjq8GnZHZJZ34D6TEKTXQsibm7GsZ5C1IZK8n3aOGY3SKa5DDGp3gc7IFx4bQsvzF7ObAQzKl7aT5QVAOsF5YuupSS5Iab_L8QsOrpQm-0mr4V_GC00F__0m00)
+
+### Các chức năng chính trong hệ thống bao gồm:
+- **Quản lý nhân viên (Employee Management)**
+- **Tính lương (Salary Calculation)**
+- **Quản lý ngày công (Attendance Management)**
+- **Quản lý chấm công (Timekeeping)**
+- **Quản lý bảng lương (Payslip Management)**
+- **Quản lý báo cáo (Report Management)**
+
+---
+
+## Phân tích các hệ thống con
+
+Dựa trên các chức năng trên, chúng ta có thể phân chia hệ thống thành các hệ thống con, mỗi hệ thống con sẽ đảm nhiệm một số tác vụ và quản lý một phần dữ liệu của hệ thống Payroll.
+
+### Quản lý nhân viên (Employee Management)
+- **Chức năng**: Thêm, sửa, xóa thông tin nhân viên.
+- **Các tác vụ**:
+  - Thêm nhân viên mới.
+  - Cập nhật thông tin nhân viên.
+  - Xóa nhân viên khỏi hệ thống.
+
+### Tính lương (Salary Calculation)
+- **Chức năng**: Tính lương cơ bản, lương thưởng, lương thêm giờ và các khoản khấu trừ.
+- **Các tác vụ**:
+  - Tính lương cơ bản.
+  - Tính lương thưởng và các khoản phụ cấp.
+  - Tính các khoản khấu trừ như thuế, bảo hiểm xã hội.
+
+### Quản lý ngày công (Attendance Management)
+- **Chức năng**: Theo dõi và quản lý ngày công của nhân viên.
+- **Các tác vụ**:
+  - Cập nhật ngày vắng mặt, phép năm, nghỉ lễ.
+  - Theo dõi số ngày làm việc của nhân viên.
+
+### Quản lý chấm công (Timekeeping)
+- **Chức năng**: Ghi nhận thời gian vào làm và ra về của nhân viên.
+- **Các tác vụ**:
+  - Đăng ký giờ vào làm.
+  - Đăng ký giờ ra về.
+  - Quản lý giờ làm thêm.
+
+### Quản lý bảng lương (Payslip Management)
+- **Chức năng**: Tạo và phát hành bảng lương cho nhân viên.
+- **Các tác vụ**:
+  - Tạo bảng lương cho nhân viên.
+  - Phát hành bảng lương.
+  - Lưu trữ bảng lương.
+
+### Quản lý báo cáo (Report Management)
+- **Chức năng**: Tạo các báo cáo tổng hợp liên quan đến lương, bảo hiểm và thuế.
+- **Các tác vụ**:
+  - Xuất báo cáo tổng lương.
+  - Xuất báo cáo thuế và bảo hiểm.
+  - Xuất báo cáo chi phí nhân sự.
+
+---
+
+## Các Actor trong hệ thống
+
+Các **Actor** trong hệ thống Payroll System đại diện cho những người hoặc hệ thống tương tác với hệ thống và thực hiện các chức năng cụ thể.
+
+### **Admin**
+- **Vai trò**: Quản trị viên hệ thống, có quyền truy cập vào tất cả các chức năng và thông tin trong hệ thống.
+- **Các tác vụ chính**:
+  - Quản lý thông tin nhân viên.
+  - Quản lý tính lương, bảng lương và các báo cáo.
+  - Quản lý quyền truy cập và cài đặt hệ thống.
+
+### **HR (Human Resources)**
+- **Vai trò**: Nhân viên bộ phận nhân sự, chịu trách nhiệm quản lý thông tin nhân viên, tính toán lương và phát hành bảng lương.
+- **Các tác vụ chính**:
+  - Thêm, sửa và xóa thông tin nhân viên.
+  - Tính toán và phê duyệt lương.
+  - Quản lý bảng lương và các thông tin liên quan đến nhân viên.
+
+### **Employee**
+- **Vai trò**: Nhân viên trong công ty, có quyền truy cập vào các thông tin cá nhân và bảng lương của mình.
+- **Các tác vụ chính**:
+  - Xem thông tin cá nhân và bảng lương.
+  - Cập nhật các thông tin cá nhân nếu cần thiết.
+
+### **Manager**
+- **Vai trò**: Quản lý của các bộ phận, có quyền xem các báo cáo tổng hợp về lương và hiệu suất của nhân viên.
+- **Các tác vụ chính**:
+  - Xem báo cáo tổng hợp về lương, thuế, và bảo hiểm.
+  - Đánh giá hiệu suất nhân viên dựa trên các báo cáo.
