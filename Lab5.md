@@ -172,4 +172,39 @@
   - Xem lịch sử lương và các phiếu lương đã nhận.
   - Nhận thông báo về phiếu lương qua email hoặc hệ thống nội bộ.
 
-## 1.1.3 
+## 1.1.3 Run Payroll (with Distribution)
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/T9DBJiCm54NdNiLJvfMQ_ii05GgY32gXGZj_IjmgmdKYsn54Y9KnO4bi0Tj9MZkVp7BloRt-lFpz_AwaGg7oCoC48vKA23Oxs2B74nK1e8JDRbixZ-UCfGMbLjSlX6GOlMloQbMVdYbN0NmHq4ykQOHICtTn35x4VXtwn3wBKT4B1C_yc5Rao2SF2VtevCRasrdM2nOYPGpMoAASeKfItbfMxL5uHOQYg88cFlL4EHK6qf6I9Lb5JRswUmqT4oK1UGmFDCuZqoXRbUKXGOrNMRDEo8snsBovGtFOi4calgEYLMKFgWNPe4N_3YszeragL0KllTRIIlYfrUUcsAFtKi9X3_s6dmqoD8Lw-60mk3NlS6CdA72qaT7AcN7biP7DlbrnOiJBLRlEr3ZrGbnZPepo5bnvtYqlkbgNVTdXiDS9VOVeAMzNNCL61LbH7flV-Hy00F__0m00)
+
+## Giải Thích:
+- HR Manager (Quản lý nhân sự) có thể thực hiện các chức năng như Thêm nhân viên, Cập nhật thông tin nhân viên, Tính lương, Quản lý phụ cấp và Tạo báo cáo.
+- Employee (Nhân viên) có thể xem Lịch sử thanh toán và Tạo báo cáo thanh toán.
+- Các chức năng khác như tính lương, quản lý phụ cấp, khấu trừ được thực hiện bởi quản lý nhân sự.
+
+## Các hệ thống con
+
+Trong hệ thống Payroll System, các hệ thống con chính bao gồm:
+
+### Quản lý nhân viên (Employee Management)
+- **Add Employee**: Quản lý nhân sự thêm mới nhân viên.
+- **Update Employee Info**: Cập nhật thông tin nhân viên.
+- **View Employee Info**: Xem thông tin nhân viên.
+
+### Tính lương (Payroll Calculation)
+- **Calculate Salary**: Tính toán lương cho nhân viên.
+- **Generate Payslip**: Tạo phiếu lương cho nhân viên.
+
+### Quản lý phụ cấp và khấu trừ (Benefits and Deductions)
+- **Manage Benefits**: Quản lý các khoản phụ cấp của nhân viên.
+- **Manage Deductions**: Quản lý các khoản khấu trừ như thuế, bảo hiểm.
+
+### Lịch sử thanh toán (Payment History)
+- **View Payment History**: Xem lịch sử thanh toán của nhân viên.
+- **Generate Payment Report**: Tạo báo cáo thanh toán.
+
+### Báo cáo (Reporting)
+- **Generate Payroll Report**: Tạo báo cáo chi tiết về chi trả lương.
+- **Generate Tax Report**: Tạo báo cáo thuế cho nhân viên hoặc công ty.
+
+## 1.1.4 Run Payroll (with OODBMS Persistency)
+
