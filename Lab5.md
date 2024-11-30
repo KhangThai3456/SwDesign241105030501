@@ -2,8 +2,9 @@
 
 ## 1. Exercise: Use-Case Design, Part 1
 
-## 1.1 Run Payroll (with ss interface)
+## 1.1 Use-Case Realization - Run Payroll
 
+### 1.1.1 Run Payroll (with ss interface)
 ![Use Case Diagram](https://www.planttext.com/api/plantuml/png/T99DJiCm48NtFiN8-wgYFniMgAYj20iab03xKJAfB3bsiIU2274o5Xo9As2diHAXi7EUFxrvR-AVh--TPtJSDbfWoTQ1p78e6EjQ0dh8yYGVcxEs7L4lXu-atrQDChtOduHmL3AQaoQGZzWvgpKKdMTg97m8WDPJYJvSFg314q7oXNjJMzSWAtknUzvVJV4zwhBLo0G5QdJTmAncB9_mVSPjFINlo92BPY6Yr-eyC9ifywBeRHW6cVAXRHgw5Pz2X3qj5ZSn9bp7DLJBOwLuUI1DFDQI8xUAN4wlBNbElgbLZ3cIwqZ-KqRqQnx0JGJ_Tl5IXEa3iOt4N9DnMczIaAcI0R2Tv8_19x76_n2J7QXgoqikiGiMyHtz0W00__y30000)
 
 ## Giải thích các Use-Case
@@ -78,3 +79,97 @@
   - Quản lý quyền truy cập và các tác vụ của nhân viên HR và nhân viên.
 
 ## 1.1.2 Run Payroll (with Security)
+
+![Use Case Diagram](https://www.planttext.com/api/plantuml/png/X9DBJiCm48RtFiKe-wg2lbcWLcr5MI2XXB8V9TCgakE4s154Y9Enu4XSWTXncjGDi7Cyd_z_Nld-_5fAXRag4iumL6aEtiw7GE7Xu05AsFdDzIfAOc7kpAcvtYOPJqiY4wa-6CifL2YEdDeWFA308oKa50IbL9HuyCu02aaXIjBYqN0RnMgu8KwAu4nrlxxgiiynlPu0k1U7D4zGnQcmy3NxE4iYG8vv2MlaOS4Ds9z30n3KBwpSg9zvmZVOK5I47UUnuwoP_ogluqRkifH9bzndKMFiLmUBJ1tFHombZpEu8q7v7zNQE85zOELcNIOW4JLnKAaxbNb_etUnh3QZxBSrmpi7hTf2grMxDnZSwed3pQat9zisFD9XdruAaWek1zmX9nqXjydCRB85Pnfqko8zLhbROg69lW9Qjxb6VcqRqudNu5Y3gopZfRD9JATSCrFDk5DdoqfT_wti1m00__y30000)
+
+## Giải thích các Use-Case
+
+### Employee Management System
+
+#### **Add/Edit/Delete Employee**
+- **Mô tả**: Quản lý thông tin nhân viên, bao gồm thêm, chỉnh sửa hoặc xóa nhân viên khỏi hệ thống.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - HR Staff có thể thêm nhân viên mới vào hệ thống, sửa thông tin của nhân viên đã có hoặc xóa nhân viên khi họ nghỉ việc hoặc chuyển công tác.
+  - Các thông tin như tên, chức vụ, ngày vào làm, mức lương, giờ làm việc sẽ được cập nhật.
+
+#### **View Employee Information**
+- **Mô tả**: Xem thông tin chi tiết về nhân viên.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - HR Staff có thể tra cứu thông tin cá nhân, thông tin công việc, lịch sử công tác của nhân viên để hỗ trợ các quyết định về nhân sự.
+
+### Salary Calculation System
+
+#### **Calculate Salary**
+- **Mô tả**: Tính toán lương cho nhân viên dựa trên các yếu tố như số giờ làm việc, mức lương cơ bản, phụ cấp, khấu trừ và thuế.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - HR Staff nhập các thông tin về số giờ làm việc, các khoản phụ cấp, các khoản khấu trừ thuế và bảo hiểm.
+  - Hệ thống tính toán tổng lương phải trả cho nhân viên sau khi áp dụng các khoản khấu trừ.
+
+#### **Calculate Tax Deduction**
+- **Mô tả**: Tính toán các khoản thuế cần khấu trừ từ lương nhân viên.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - Hệ thống sẽ tự động tính toán số tiền thuế thu nhập cá nhân cần khấu trừ từ lương nhân viên dựa trên mức thuế suất và thông tin thuế hiện tại.
+
+### Tax Management System
+
+#### **Manage Tax Information**
+- **Mô tả**: Quản lý thông tin thuế của nhân viên, bao gồm việc nhập, chỉnh sửa các thông tin về thuế, mức thuế suất, v.v.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - HR Staff sẽ nhập thông tin thuế của nhân viên khi họ gia nhập công ty, cập nhật thay đổi thuế suất hoặc điều chỉnh mức thuế trong trường hợp có thay đổi pháp luật.
+
+#### **Update Tax Rate**
+- **Mô tả**: Cập nhật mức thuế suất khi có sự thay đổi từ nhà nước hoặc tổ chức liên quan.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - HR Staff sẽ điều chỉnh mức thuế suất cho nhân viên theo các quy định thuế mới của nhà nước hoặc các quy định pháp lý khác.
+
+### Payslip Generation System
+
+#### **Generate Payslip**
+- **Mô tả**: Tạo phiếu lương cho nhân viên, bao gồm các thông tin như lương cơ bản, phụ cấp, thuế và các khoản khấu trừ.
+- **Tác nhân**: Admin.
+- **Chi tiết**:
+  - Admin sẽ tạo phiếu lương cho nhân viên sau khi tính toán xong lương và các khoản khấu trừ.
+  - Phiếu lương sẽ được xuất dưới dạng tài liệu điện tử (ví dụ: PDF) và gửi tới nhân viên.
+
+#### **Send Payslip to Employee**
+- **Mô tả**: Gửi phiếu lương cho nhân viên qua email hoặc hệ thống nội bộ.
+- **Tác nhân**: HR Staff.
+- **Chi tiết**:
+  - Sau khi phiếu lương được tạo, HR Staff sẽ gửi phiếu lương qua email cho nhân viên hoặc cung cấp liên kết để nhân viên tải về từ hệ thống.
+
+### Salary History System
+
+#### **View Salary History**
+- **Mô tả**: Nhân viên có thể xem lại lịch sử lương của mình, bao gồm các lần trả lương trước đây.
+- **Tác nhân**: Employee.
+- **Chi tiết**:
+  - Nhân viên có thể kiểm tra các phiếu lương đã nhận trong quá khứ, xem các khoản phụ cấp, thuế, khấu trừ và tổng số tiền đã nhận.
+
+## Mô tả các tác nhân
+
+### HR Staff
+- **Mô tả**: Nhân viên HR là người quản lý thông tin nhân viên, tính toán lương và xử lý các tác vụ liên quan đến thuế và phiếu lương trong hệ thống.
+- **Vai trò**:
+  - Quản lý thông tin nhân viên (thêm, sửa, xóa).
+  - Tính toán lương và quản lý các thông tin thuế của nhân viên.
+  - Tạo và gửi phiếu lương cho nhân viên.
+
+### Admin
+- **Mô tả**: Quản trị viên chịu trách nhiệm tạo và gửi phiếu lương cho nhân viên, quản lý các quyền truy cập và giám sát các tác vụ của hệ thống.
+- **Vai trò**:
+  - Quản lý quyền truy cập của HR Staff và nhân viên.
+  - Tạo và gửi phiếu lương cho nhân viên.
+
+### Employee
+- **Mô tả**: Nhân viên là người sử dụng hệ thống để theo dõi và xem lịch sử lương của mình, nhận phiếu lương và cập nhật thông tin cá nhân khi cần thiết.
+- **Vai trò**:
+  - Xem lịch sử lương và các phiếu lương đã nhận.
+  - Nhận thông báo về phiếu lương qua email hoặc hệ thống nội bộ.
+
+## 1.1.3 
