@@ -569,5 +569,95 @@ Lớp `DatabaseConnection` chịu trách nhiệm kết nối và tương tác v�
         - `query`: Câu truy vấn SQL cần thực thi.
     - **Trả về**: Số lượng bản ghi bị ảnh hưởng bởi câu truy vấn (dạng `int`).
 
-## Xác định các trạng thái
+---
+
+## 2. Xác định các trạng thái
+
+![Sequence Diagram](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3bUqLgo2hgwTmf493tTjBudFEBmWBvsB2va7bKxCIu-lUBXxRNpEuRqALWeXcGztxSzJ0Ad8K029Am35kT2KGNGUNXoVaGzK5ry2KMsbu07YAfGytBMq1BUMXxkNLuBKWkaZ4uyjXDYMpeLf8aWJq2DSI1fXGbmEgNaf88y20000__y30000)
+
+## Biểu đồ trạng thái cho lớp `Order`
+
+### Giải thích
+
+Biểu đồ trạng thái là một công cụ hữu ích trong UML để mô tả sự thay đổi trạng thái của một đối tượng trong suốt vòng đời của nó. Các trạng thái trong biểu đồ thể hiện các giai đoạn khác nhau mà đối tượng có thể trải qua và các sự kiện (hoặc hành vi) có thể làm thay đổi trạng thái của đối tượng.
+
+Dưới đây là các trạng thái trong biểu đồ trạng thái của lớp `Order`:
+
+1. **Đặt_hàng (Order)**: 
+   - Đây là trạng thái ban đầu của đối tượng `Order`, khi người dùng thực hiện yêu cầu đặt hàng. Đơn hàng sẽ bắt đầu ở trạng thái này sau khi người dùng tạo đơn hàng.
+
+2. **Đang_xử_lý (Processing)**: 
+   - Sau khi đơn hàng được đặt, nó sẽ chuyển sang trạng thái "Đang xử lý". Trong trạng thái này, hệ thống thực hiện các công đoạn xử lý đơn hàng, ví dụ như xác minh thông tin và chuẩn bị hàng hóa.
+
+3. **Đã_hoàn_thành (Completed)**: 
+   - Đây là trạng thái khi đơn hàng đã được hoàn tất và giao hàng thành công cho khách hàng. Sau khi đơn hàng hoàn thành, hệ thống có thể chuyển sang trạng thái "Đã hoàn thành" và kết thúc vòng đời của đơn hàng.
+
+4. **Đã_hủy (Cancelled)**: 
+   - Trạng thái này được kích hoạt khi đơn hàng bị hủy vì một lý do nào đó, chẳng hạn như người dùng yêu cầu hủy hoặc có sự cố trong quá trình xử lý đơn hàng.
+
+5. **[*]**: 
+   - Biểu tượng này đại diện cho điểm bắt đầu và kết thúc của chuỗi trạng thái trong biểu đồ. Đơn hàng sẽ bắt đầu từ trạng thái "Đặt hàng" và có thể kết thúc ở trạng thái "Đã hoàn thành" hoặc "Đã hủy".
+
+### Cách sử dụng trong thực tế
+
+Biểu đồ trạng thái rất hữu ích khi bạn cần mô tả các trạng thái khác nhau mà một đối tượng có thể trải qua trong suốt vòng đời của nó, đặc biệt là đối với các lớp có trạng thái phức tạp như `Order`.
+
+### Ví dụ về cách sử dụng:
+1. **Đặt hàng** (Order): 
+   - Khi người dùng tạo một đơn hàng, hệ thống sẽ tạo đối tượng `Order` và chuyển nó vào trạng thái "Đặt hàng". Đây là trạng thái khởi tạo cho đơn hàng.
+
+2. **Đang xử lý** (Processing):
+   - Sau khi đơn hàng được xác nhận và thanh toán thành công, đơn hàng sẽ chuyển sang trạng thái "Đang xử lý". Trong giai đoạn này, hệ thống sẽ chuẩn bị hàng hóa và giao hàng.
+
+3. **Đã hoàn thành** (Completed):
+   - Khi đơn hàng đã được giao thành công và hoàn tất, trạng thái của đơn hàng sẽ chuyển sang "Đã hoàn thành". Lúc này, người dùng có thể xem thông tin đơn hàng đã giao.
+
+4. **Đã hủy** (Cancelled):
+   - Nếu có bất kỳ lý do nào khiến đơn hàng không thể tiếp tục, ví dụ như người dùng hủy đơn hoặc gặp sự cố trong quá trình xử lý, đơn hàng sẽ chuyển sang trạng thái "Đã hủy". Điều này sẽ kết thúc vòng đời của đơn hàng.
+  
+---
+
+## 3. Xác định các thuộc tính
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/X571QiCm3BtxAqHEtQKVa4CfD9SUHWSRxTcpjSpKYOCb5qgxB-jXdxHVc5AIPKjJ9h2DzEndlQUlo-UIM4TEbLUgqMQlIuHiktbQPN1I8E5gnlYcZPI9rdtIezSWv1TNeT7HpXuWXqDmTa3B4TedmutKMCquJV6XheVncWYoHotjoFeX-TC7TyLraSCpHrUN0uPLuyCHSGfhVy-Xa7selOSKQHVY7gr08RtwNw1OnebkYKp4kqB-LJesgq1HwkdMiywIAJFcy_DYDASSd4Z72cic9K-NMDjssjy0003__mC0)
+
+# Giải thích về "Maintain Timecard" và Giao diện "ssInterface"
+
+## Tổng Quan
+
+Đoạn code PlantUML mô tả hệ thống quản lý **Timecard** trong môi trường **VOPC** (Virtual Office Process Control). Trong đó, lớp `Maintain Timecard` giữ vai trò quan trọng trong việc quản lý các bảng chấm công của nhân viên, trong khi `ssInterface` là giao diện giúp tương tác với các chức năng liên quan đến Timecard.
+
+## Lớp "Maintain Timecard"
+
+Lớp `Maintain Timecard` đại diện cho một bảng chấm công của nhân viên và có các thuộc tính cũng như phương thức sau:
+
+### Thuộc Tính:
+- **`timecardID`**: Mã định danh duy nhất của bảng chấm công (String).
+- **`employeeID`**: Mã nhân viên (String).
+- **`date`**: Ngày chấm công (Date).
+- **`hoursWorked`**: Số giờ làm việc của nhân viên trong ngày (Double).
+- **`status`**: Trạng thái của bảng chấm công (String) – có thể là "Đã duyệt", "Chưa duyệt", v.v.
+
+### Phương Thức:
+- **`createTimecard()`**: Phương thức để tạo bảng chấm công mới.
+- **`updateTimecard()`**: Phương thức để cập nhật bảng chấm công hiện tại.
+- **`getTimecardDetails()`**: Phương thức để lấy chi tiết của bảng chấm công.
+
+Lớp này cung cấp các phương thức cho phép tạo mới, cập nhật và truy xuất thông tin bảng chấm công của nhân viên, phục vụ cho các nhu cầu về báo cáo và quản lý.
+
+## Giao Diện "ssInterface"
+
+Giao diện `ssInterface` chứa các phương thức cần thiết để tương tác với các bảng chấm công:
+
+### Phương Thức:
+- **`setTimecard()`**: Phương thức để thiết lập thông tin bảng chấm công (Void).
+- **`getTimecard()`**: Phương thức để lấy thông tin bảng chấm công (Trả về đối tượng `Timecard`).
+- **`updateTimecard()`**: Phương thức để cập nhật bảng chấm công (Void).
+
+### Mối Quan Hệ:
+- Lớp `Maintain Timecard` **implements** giao diện `ssInterface`, có nghĩa là `Maintain Timecard` sẽ thực hiện tất cả các phương thức trong `ssInterface`.
+
+## Mối Quan Hệ Giữa Các Thành Phần
+
+Lớp `Maintain Timecard` và giao diện `ssInterface` có mối quan hệ kế thừa (implements), nghĩa là lớp `Maintain Timecard` phải cài đặt tất cả các phương thức từ giao diện `ssInterface`. Điều này đảm bảo rằng tất cả các chức năng cơ bản của Timecard đều được cung cấp thông qua giao diện này.
 
