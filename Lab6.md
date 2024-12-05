@@ -4,7 +4,7 @@
 
 ## 1. Xác định các operations
 
-## Maintain Timecard
+## 1.1. Maintain Timecard
 
 ![Class Diagram](https://www.planttext.com/api/plantuml/png/V9EnJiCm48PtFyMf2orgArWZX2fK993Q2IHcDpwb5evTRATIXPYPcPbu0XuW0mDFqYVW5R1JEqtImfBeVltvVF-TyrD-JOobsXQv8EG4PjloVGNN-Kge3I991JMcBk6P08m0GtaxJO1BMscIvfZ0dTLSPfN0SEMeEKhRa04oj94sHKkvCFr1or2i6BNOzJJnmoDinrWhpiZBFiCzpp6bceKCiGmPR2YR6MAkP9_VoqjLQFEWz2Eo19Wg5cAd-puJcBfdJ1RFE9wCCkOfDnxNhw0Hzq_tSoffXheJ8gYTB8utuyPUHDTbF3OA_UXCQb8ysZirvcgD1-OmegQpaVLg4uVLxzoBmK4xZNn-4enkGgvGXJojmOwWkfuUikjwjoh9MWf0IaLQ2FUDPqqBJIrNqc-WtXY0KDb-0ntiiCrihMI-BTyuF1LKmd9RlaB6j-KdXVJx8mNXuv3w3-cTzs0qWjxPU7pQsr-w15ADhZb3QYawtQl-Ee452YKp0rQHxhB_HEULmP0unGQvuTAOAdT729cueFvl_mK00F__0m00)
 
@@ -81,149 +81,493 @@ Lớp `TimecardManager` lưu trữ và quản lý tất cả các thẻ chấm c
 **Mô tả**:
 Lớp `Workday` ghi lại thông tin về một ngày làm việc của nhân viên, bao gồm thời gian bắt đầu và kết thúc. Một `Timecard` sẽ liên kết với một `Workday` để lưu trữ các thông tin này.
 
-## BankSystem
+---
 
-![Class Diagram](https://www.planttext.com/api/plantuml/png/X9N1RXiX48Rl-nGZN-9KTjHShSfAd3tKKjL3upm0tYKswYwiW8rbLNco7F98VOK22-p0EgalDiFmp_3nW_--lTyfJQJkswOehk2X8Kh1awAogE9F-5E0-IoXDuDj2Ijur9BnWuzoqj8yHkfQKhCy2tT7mUdFljqRqMoAjeGrOz150GvKsmws_5dChzCb07rN4qtZlEqZP2n21sF0rHw7hbuOMkaNmUgiQebhlevyxgjAz5nxH7uKAP5XV7cRUz8GNbbUjUZt3KLaJSo1JrHsvuvUeh8PT5o3I0cWffrGJCz9QvU7oMo39wQFjIIdpxDCcNkyb-a9Q4cuUZOpgSx2TA4quqGpmRt4Ad2AHH3GdTKXbKttK54aWjLZREf2QmKJAyrN8EXwoaaZaPHjWXrYkuWvwgcasjX7JObqKbJ6TYXrFgMwmnlvm6CRmdy_dfMchISo1dAdsMlsWodzpRUyHgQASzPQwoc3E8zwMeSzLv8Qd5vrRkK6YowmE_4T2ino_spEta79tVXuvL0OGoIPYnQGMouxM2oExNNf4BuR04AU9qMkBy8P5CpxOb4WAjavIzgA5nfpjkNaiN6d_Oisxfge8-jKuPxRsUqCbakOVRsv-JABpyiAn8ch8WpJ97nTLi64L1N8DEc2f-71QGadXy_onkh_JKrx2Ed57UMr_NVv1m00__y30000)
+## 1.2. BankSystem
 
-## **Lớp `User`**
+![Class Diagram](https://www.planttext.com/api/plantuml/png/V98xRiCm38PtdOBmv1J8qDLJacRfaYMv02qHgL5B2YIwWL7qP1rwf5wXiYCxiXrKWmN_fCYFZz_ldurdTDpe6dPete-jPz92o1gzxvMjbBOn39y2mba3tluFZIx95N1aLvbpj9LOev5KmDusPKrHjLVJURuqdgqcrwi0YYxMLvoZxi8DJrO5VDXAHPzhnM_AuVLVfpFnxfOtNqqozwPjYjivHE2leSO1QonGHk5LpQepg6acaSQgdcW0qX4onRpvmtO5ZAIr2zXyPXzPJmwDHycLDICktxK5yRHjKLI1BaZXkunmQY_p4iixo2FgYxEIl4_8yiLu4kEUE7JCJmUHhbdsdC7JUjtVusWAoBebKb2scKYRa7gdKS83HtKeKG7RJ8WD6HLMNFm1003__mC0)
 
-### Thuộc tính:
-- **userID**: Mã định danh của người dùng (String).
-- **name**: Tên của người dùng (String).
-- **address**: Địa chỉ của người dùng (String).
-- **phoneNumber**: Số điện thoại của người dùng (String).
-- **email**: Địa chỉ email của người dùng (String).
+## Thiết kế hệ thống
 
-### Các phép toán (Operations):
-- **getUserInfo()**: 
-  - Trả về thông tin chi tiết của người dùng dưới dạng một chuỗi.
-  - **Trả về**: String (Thông tin người dùng).
-  
-- **updateUserInfo(name: String, address: String, phone: String, email: String)**: 
-  - Cập nhật thông tin của người dùng.
-  - **Tham số**: 
-    - `name`: Tên mới của người dùng.
-    - `address`: Địa chỉ mới của người dùng.
-    - `phone`: Số điện thoại mới.
-    - `email`: Địa chỉ email mới.
-  - **Trả về**: void (Không có giá trị trả về).
-  
-- **getUserID()**: 
-  - Trả về mã định danh của người dùng.
-  - **Trả về**: String (Mã ID của người dùng).
+### Lớp `BankAccount`
+Lớp `BankAccount` đại diện cho một tài khoản ngân hàng và bao gồm các thuộc tính sau:
+- `accountNumber`: Số tài khoản (kiểu String)
+- `balance`: Số dư tài khoản (kiểu Double)
+- `owner`: Chủ sở hữu tài khoản (kiểu `Customer`)
 
-## **Lớp `Account`**
+Các phương thức (operations) trong lớp:
+- `deposit(amount: Double)`: Nạp tiền vào tài khoản.
+- `withdraw(amount: Double)`: Rút tiền từ tài khoản.
+- `getBalance()`: Lấy số dư tài khoản.
+- `getAccountNumber()`: Lấy số tài khoản.
 
-### Thuộc tính:
-- **accountNumber**: Số tài khoản của người dùng (String).
-- **balance**: Số dư tài khoản (double).
-- **user**: Tham chiếu đến đối tượng `User` mà tài khoản thuộc về.
-- **accountType**: Loại tài khoản (String) ví dụ: tiết kiệm, thanh toán.
+### Lớp `Customer`
+Lớp `Customer` đại diện cho khách hàng của ngân hàng, với các thuộc tính:
+- `customerId`: ID của khách hàng (kiểu String)
+- `name`: Tên khách hàng (kiểu String)
+- `email`: Email khách hàng (kiểu String)
 
-### Các phép toán (Operations):
-- **getBalance()**:
-  - Trả về số dư hiện tại của tài khoản.
-  - **Trả về**: double (Số dư tài khoản).
-  
-- **deposit(amount: double)**:
-  - Nạp tiền vào tài khoản.
-  - **Tham số**: 
-    - `amount`: Số tiền muốn nạp vào tài khoản.
-  - **Trả về**: void (Không có giá trị trả về).
-  
-- **withdraw(amount: double)**:
-  - Rút tiền từ tài khoản.
-  - **Tham số**: 
-    - `amount`: Số tiền muốn rút từ tài khoản.
-  - **Trả về**: void (Không có giá trị trả về).
-  
-- **getAccountNumber()**:
-  - Trả về số tài khoản của người dùng.
-  - **Trả về**: String (Số tài khoản).
-  
-- **transfer(amount: double, destinationAccount: Account)**:
-  - Chuyển tiền từ tài khoản này sang tài khoản khác.
-  - **Tham số**: 
-    - `amount`: Số tiền muốn chuyển.
-    - `destinationAccount`: Tài khoản đích nhận tiền.
-  - **Trả về**: void (Không có giá trị trả về).
+Các phương thức trong lớp:
+- `createAccount(accountNumber: String)`: Tạo tài khoản mới cho khách hàng.
+- `getAccount()`: Lấy thông tin tài khoản của khách hàng.
 
-## **Lớp `Transaction`**
+### Lớp `Transaction`
+Lớp `Transaction` đại diện cho giao dịch ngân hàng, bao gồm các thuộc tính:
+- `transactionId`: ID giao dịch (kiểu String)
+- `amount`: Số tiền giao dịch (kiểu Double)
+- `date`: Ngày thực hiện giao dịch (kiểu Date)
+- `transactionType`: Loại giao dịch ("Deposit" hoặc "Withdraw")
+- `bankAccount`: Tài khoản liên quan đến giao dịch (kiểu `BankAccount`)
 
-### Thuộc tính:
-- **transactionID**: Mã giao dịch (String).
-- **date**: Ngày thực hiện giao dịch (Date).
-- **amount**: Số tiền trong giao dịch (double).
-- **transactionType**: Loại giao dịch (String), ví dụ: rút tiền, chuyển khoản, nạp tiền.
-- **account**: Tham chiếu đến tài khoản mà giao dịch liên quan.
+Các phương thức trong lớp:
+- `processTransaction()`: Thực hiện giao dịch.
+- `getTransactionDetails()`: Lấy thông tin chi tiết về giao dịch.
 
-### Các phép toán (Operations):
-- **getTransactionDetails()**:
-  - Trả về chi tiết về giao dịch.
-  - **Trả về**: String (Thông tin giao dịch).
-  
-- **processTransaction()**:
-  - Xử lý giao dịch và thực hiện thao tác tương ứng (rút tiền, nạp tiền, chuyển khoản).
-  - **Trả về**: void (Không có giá trị trả về).
-  
-- **getTransactionID()**:
-  - Trả về mã định danh của giao dịch.
-  - **Trả về**: String (Mã giao dịch).
+## Các Phương Thức (Operations) Đã Xác Định
 
-## **Lớp `BankSystem`**
+### Lớp `BankAccount`
+Lớp `BankAccount` quản lý các tài khoản ngân hàng và các nghiệp vụ tài chính cơ bản. Dưới đây là các phương thức (operations) đã xác định:
 
-### Thuộc tính:
-- **accounts**: Danh sách các tài khoản trong hệ thống (List<Account>).
-- **users**: Danh sách các người dùng trong hệ thống (List<User>).
-- **transactions**: Danh sách các giao dịch trong hệ thống (List<Transaction>).
+#### **`deposit(amount: Double)`**  
+- **Mô tả**: Nạp tiền vào tài khoản.
+- **Tham số**: `amount`: Số tiền muốn nạp vào tài khoản (kiểu `Double`).
+- **Trả về**: Không có giá trị trả về (`void`).
+- **Ví dụ**:
+    ```java
+    account.deposit(1000.0); // Nạp 1000 vào tài khoản
+    ```
 
-### Các phép toán (Operations):
-- **createAccount(user: User, accountType: String)**:
-  - Tạo một tài khoản mới cho người dùng.
-  - **Tham số**: 
-    - `user`: Người dùng sở hữu tài khoản.
-    - `accountType`: Loại tài khoản (ví dụ: tiết kiệm, thanh toán).
-  - **Trả về**: Account (Tài khoản mới được tạo).
+#### **`withdraw(amount: Double)`**  
+- **Mô tả**: Rút tiền từ tài khoản.
+- **Tham số**: `amount`: Số tiền muốn rút khỏi tài khoản (kiểu `Double`).
+- **Trả về**: Không có giá trị trả về (`void`).
+- **Ví dụ**:
+    ```java
+    account.withdraw(500.0); // Rút 500 từ tài khoản
+    ```
 
-- **getAccountByNumber(accountNumber: String)**:
-  - Trả về tài khoản dựa trên số tài khoản.
-  - **Tham số**: 
-    - `accountNumber`: Số tài khoản cần tìm.
-  - **Trả về**: Account (Tài khoản tương ứng với số tài khoản).
-  
-- **createTransaction(account: Account, amount: double, transactionType: String)**:
-  - Tạo một giao dịch mới cho tài khoản.
-  - **Tham số**: 
-    - `account`: Tài khoản thực hiện giao dịch.
-    - `amount`: Số tiền trong giao dịch.
-    - `transactionType`: Loại giao dịch (ví dụ: chuyển khoản, nạp tiền).
-  - **Trả về**: Transaction (Giao dịch được tạo).
-  
-- **getTransactionHistory(account: Account)**:
-  - Lấy lịch sử giao dịch của tài khoản.
-  - **Tham số**: 
-    - `account`: Tài khoản cần lấy lịch sử giao dịch.
-  - **Trả về**: List<Transaction> (Danh sách giao dịch của tài khoản).
-  
-- **addUser(user: User)**:
-  - Thêm người dùng vào hệ thống.
-  - **Tham số**: 
-    - `user`: Người dùng muốn thêm vào hệ thống.
-  - **Trả về**: void (Không có giá trị trả về).
-  
-- **removeUser(userID: String)**:
-  - Xóa người dùng khỏi hệ thống.
-  - **Tham số**: 
-    - `userID`: Mã ID của người dùng cần xóa.
-  - **Trả về**: void (Không có giá trị trả về).
+#### **`getBalance()`**  
+- **Mô tả**: Lấy số dư hiện tại của tài khoản.
+- **Trả về**: `Double`: Số dư tài khoản.
+- **Ví dụ**:
+    ```java
+    double balance = account.getBalance(); // Lấy số dư tài khoản
+    ```
 
-## Quan hệ Giữa Các Lớp
+#### **`getAccountNumber()`**  
+- **Mô tả**: Lấy số tài khoản của khách hàng.
+- **Trả về**: `String`: Số tài khoản.
+- **Ví dụ**:
+    ```java
+    String accountNumber = account.getAccountNumber(); // Lấy số tài khoản
+    ```
 
-- Một người dùng (`User`) có thể sở hữu nhiều tài khoản (`Account`).
-- Mỗi tài khoản có thể có nhiều giao dịch (`Transaction`).
-- Hệ thống ngân hàng (`BankSystem`) quản lý người dùng, tài khoản và giao dịch.
+### Lớp `Customer`
+Lớp `Customer` đại diện cho một khách hàng và có các phương thức sau:
+
+#### **`createAccount(accountNumber: String)`**  
+- **Mô tả**: Tạo một tài khoản mới cho khách hàng.
+- **Tham số**: `accountNumber`: Số tài khoản (kiểu `String`).
+- **Trả về**: Một đối tượng `BankAccount` đại diện cho tài khoản vừa tạo.
+- **Ví dụ**:
+    ```java
+    BankAccount account = customer.createAccount("123456789"); // Tạo tài khoản mới
+    ```
+
+#### **`getAccount()`**  
+- **Mô tả**: Lấy tài khoản của khách hàng.
+- **Trả về**: `BankAccount`: Đối tượng tài khoản của khách hàng.
+- **Ví dụ**:
+    ```java
+    BankAccount account = customer.getAccount(); // Lấy tài khoản của khách hàng
+    ```
+
+### Lớp `Transaction`
+Lớp `Transaction` đại diện cho các giao dịch ngân hàng. Các phương thức bao gồm:
+
+#### **`processTransaction()`**  
+- **Mô tả**: Thực hiện giao dịch (nạp tiền hoặc rút tiền).
+- **Trả về**: Không có giá trị trả về (`void`).
+- **Ví dụ**:
+    ```java
+    transaction.processTransaction(); // Xử lý giao dịch
+    ```
+
+#### **`getTransactionDetails()`**  
+- **Mô tả**: Lấy chi tiết thông tin giao dịch.
+- **Trả về**: `String`: Thông tin chi tiết về giao dịch (ví dụ: ID, số tiền, loại giao dịch).
+- **Ví dụ**:
+    ```java
+    String details = transaction.getTransactionDetails(); // Lấy thông tin giao dịch
+    ```
+
+## Cài đặt Hệ thống
+
+### Lớp `BankAccount` (Java)
+    public class BankAccount {
+        private String accountNumber;
+        private double balance;
+        private Customer owner;
+    
+        public BankAccount(String accountNumber, Customer owner) {
+            this.accountNumber = accountNumber;
+            this.owner = owner;
+            this.balance = 0.0;
+        }
+    
+        // Nạp tiền vào tài khoản
+        public void deposit(double amount) {
+            balance += amount;
+        }
+    
+        // Rút tiền từ tài khoản
+        public void withdraw(double amount) {
+            if (balance >= amount) {
+                balance -= amount;
+            } else {
+                System.out.println("Không đủ số dư.");
+            }
+        }
+    
+        // Lấy số dư tài khoản
+        public double getBalance() {
+            return balance;
+        }
+    
+        // Lấy số tài khoản
+        public String getAccountNumber() {
+            return accountNumber;
+        }
+    }
+
+### Lớp `Customer` (Java)
+
+    public class Customer {
+        private String customerId;
+        private String name;
+        private String email;
+    
+        public Customer(String customerId, String name, String email) {
+            this.customerId = customerId;
+            this.name = name;
+            this.email = email;
+        }
+    
+        // Tạo tài khoản mới cho khách hàng
+        public BankAccount createAccount(String accountNumber) {
+            return new BankAccount(accountNumber, this);
+        }
+    
+        // Lấy tài khoản của khách hàng
+        public BankAccount getAccount() {
+            return new BankAccount("12345", this); // Giả sử khách hàng đã có tài khoản
+        }
+    }
+
+### Lớp `Transaction` (Java)
+
+    public class Transaction {
+        private String transactionId;
+        private double amount;
+        private Date date;
+        private String transactionType;
+        private BankAccount bankAccount;
+    
+        public Transaction(String transactionId, double amount, String transactionType, BankAccount bankAccount) {
+            this.transactionId = transactionId;
+            this.amount = amount;
+            this.transactionType = transactionType;
+            this.bankAccount = bankAccount;
+            this.date = new Date();
+        }
+    
+        // Xử lý giao dịch
+        public void processTransaction() {
+            if (transactionType.equals("Deposit")) {
+                bankAccount.deposit(amount);
+            } else if (transactionType.equals("Withdraw")) {
+                bankAccount.withdraw(amount);
+            }
+        }
+    
+        // Lấy thông tin chi tiết giao dịch
+        public String getTransactionDetails() {
+            return "Transaction ID: " + transactionId + ", Amount: " + amount + ", Type: " + transactionType;
+        }
+    }
 
 ---
+
+## 1.3. PrintService
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/Z59BQiCm4Dth5C8h9pI1RaqfsJQKq98JoD8G72oFqSSKIa_MHO_KArJoIDGARLDlF7hlpRoPaJxVFtRM2UEyxXcJlR2MFvbkS4SmKoU1lp8UlsSF7lWPspaWJ2YrnxOUepm43IM6Q4NyQ522jGTuYM2zQlY4dM9lXG-OR75quNpY8w47ePDDYzY368YepuLHazcBge6xA1lo7bI1A9HUm-2-dH8Hzk6y9IXNg-Vy9abkYkICfh7dTIu7db69Ukp1mO-ReEscXXyxw-woxtrit5xRzzB8WCO9_Y4yWLjSJPR4fee7KDrMVBtPXFzskwwerJyLwLglQw8RJVuRotOmgFWolm000F__0m00)
+
+## Các Operations đã xác định
+
+### Lớp `PrintService`
+
+#### `addJob(printJob: PrintJob)`
+- **Mô tả**: Thêm một công việc in mới vào hàng đợi.
+- **Tham số**: 
+  - `printJob`: Đối tượng `PrintJob` đại diện cho công việc in.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    printService.addJob(new PrintJob("job001", "Document1"));
+    ```
+
+#### `processNextJob()`
+- **Mô tả**: Xử lý công việc in tiếp theo trong hàng đợi.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    printService.processNextJob();
+    ```
+
+---
+
+### Lớp `Printer`
+
+#### `print(job: PrintJob): boolean`
+- **Mô tả**: In một công việc in.
+- **Tham số**: 
+  - `job`: Đối tượng `PrintJob` chứa thông tin công việc cần in.
+- **Trả về**: 
+  - `boolean`: Trả về `true` nếu in thành công, `false` nếu thất bại.
+- **Ví dụ**:
+    ```java
+    printer.print(printJob);
+    ```
+
+---
+
+### Lớp `PrintJob`
+
+#### `startJob()`
+- **Mô tả**: Bắt đầu công việc in.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    printJob.startJob();
+    ```
+
+#### `completeJob()`
+- **Mô tả**: Hoàn thành công việc in.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    printJob.completeJob();
+    ```
+
+---
+
+### Lớp `Queue`
+
+#### `addJob(printJob: PrintJob)`
+- **Mô tả**: Thêm một công việc in vào hàng đợi.
+- **Tham số**: 
+  - `printJob`: Đối tượng `PrintJob`.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    queue.addJob(new PrintJob("job002", "Document2"));
+    ```
+
+#### `removeJob(printJob: PrintJob)`
+- **Mô tả**: Xóa một công việc in khỏi hàng đợi.
+- **Tham số**: 
+  - `printJob`: Đối tượng `PrintJob` cần xóa.
+- **Trả về**: Không trả về giá trị.
+- **Ví dụ**:
+    ```java
+    queue.removeJob(printJob);
+    ```
+
+#### `getNextJob()`
+- **Mô tả**: Lấy công việc in tiếp theo từ hàng đợi.
+- **Trả về**: 
+  - `PrintJob`: Công việc in tiếp theo.
+- **Ví dụ**:
+    ```java
+    PrintJob nextJob = queue.getNextJob();
+    ```
+
+## Cài đặt Hệ thống
+
+### Lớp `PrintService`
+
+    public class PrintService {
+        private Queue jobQueue;
+        private Printer printer;
+    
+        public PrintService(Printer printer) {
+            this.jobQueue = new Queue();
+            this.printer = printer;
+        }
+    
+        // Thêm công việc vào hàng đợi
+        public void addJob(PrintJob printJob) {
+            jobQueue.addJob(printJob);
+        }
+    
+        // Xử lý công việc in tiếp theo
+        public void processNextJob() {
+            PrintJob nextJob = jobQueue.getNextJob();
+            if (nextJob != null) {
+                nextJob.startJob();
+                if (printer.print(nextJob)) {
+                    nextJob.completeJob();
+                    jobQueue.removeJob(nextJob);
+                }
+            }
+        }
+    }
+
+### Lớp `Printer`
+
+    public class Printer {
+        private String printerName;
+    
+        public Printer(String printerName) {
+            this.printerName = printerName;
+        }
+    
+        // In một công việc
+        public boolean print(PrintJob job) {
+            System.out.println("In công việc: " + job.getJobId());
+            // Giả lập in thành công
+            return true;
+        }
+    }
+
+### Lớp `PrintJob`
+
+    public class PrintJob {
+        private String jobId;
+        private String documentName;
+        private String status;
+    
+        public PrintJob(String jobId, String documentName) {
+            this.jobId = jobId;
+            this.documentName = documentName;
+            this.status = "Pending";
+        }
+    
+        // Bắt đầu công việc in
+        public void startJob() {
+            this.status = "In Progress";
+        }
+    
+        // Hoàn thành công việc in
+        public void completeJob() {
+            this.status = "Completed";
+        }
+    
+        // Lấy ID công việc
+        public String getJobId() {
+            return jobId;
+        }
+    
+        // Lấy tên tài liệu
+        public String getDocumentName() {
+            return documentName;
+        }
+    }
+
+## 1.4. ProjectManagementDatabase
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/Z9J1JeD048RlFCM4YzIq1w_4c1fxCQc9jV41LdQ2QvQ5iajZOppx49wCyMYyIuo7FWbFu2kuq2rbeHWvG3B_D_3FFy1F_ZsMYgGgYxZZ7C2qo9yJk4pZEmpK1H4an0Y5cX15ReX49-14oduT7XpGnmYI3I5zc3AfZat3IQK244fDnJEWlxtdm8TbpAW1KupY9RROS-h3NALCX3OSelgBD9g1iuGIrRvpZmkkHpZbt6ZI6xIdUkn4PmVLZcNdozG5YR1LeYY3b2MAnQAbLFlIYUkEycogA6YdfacLIQkz6TC45M6yciSYh6osKDFYS9-xOTlOqFPaPofh5_FAf6TxxTkiWNUE6z5lNyApM0YDQcjc2rsXNaXGbtnez6qUQqJFDaEPt2_WFGQPmbc6wSfRbEV6D5SeCwxcg6pukegwGpEXDfFDCYBWjiYV86H5_a4WMBy4mCjvdVwlq3rouN0q0ZSYOkNMRw4FYwpuV1N0rr__wTRNFT7v88ly7MYHl-dydR5USldp-0K00F__0m00)
+
+## Các operations đã xác định
+
+## Lớp `ProjectManagementDatabase`
+
+Lớp `ProjectManagementDatabase` chịu trách nhiệm quản lý các dự án trong hệ thống. Các phương thức trong lớp này sẽ thao tác với danh sách các dự án và cơ sở dữ liệu.
+
+### Các Operations
+
+- **`addProject(project: Project): void`**
+    - **Mô tả**: Thêm một dự án mới vào cơ sở dữ liệu.
+    - **Tham số**:
+        - `project`: Đối tượng `Project` đại diện cho dự án cần thêm.
+    - **Trả về**: Không có giá trị trả về.
+  
+- **`removeProject(projectId: String): void`**
+    - **Mô tả**: Xóa một dự án khỏi cơ sở dữ liệu dựa trên `projectId`.
+    - **Tham số**:
+        - `projectId`: ID của dự án cần xóa.
+    - **Trả về**: Không có giá trị trả về.
+
+- **`getProject(projectId: String): Project`**
+    - **Mô tả**: Truy xuất thông tin của một dự án dựa trên `projectId`.
+    - **Tham số**:
+        - `projectId`: ID của dự án cần lấy thông tin.
+    - **Trả về**: Đối tượng `Project` chứa thông tin của dự án.
+
+- **`updateProject(project: Project): void`**
+    - **Mô tả**: Cập nhật thông tin của một dự án trong cơ sở dữ liệu.
+    - **Tham số**:
+        - `project`: Đối tượng `Project` chứa thông tin cập nhật của dự án.
+    - **Trả về**: Không có giá trị trả về.
+
+- **`listAllProjects(): List<Project>`**
+    - **Mô tả**: Lấy danh sách tất cả các dự án trong cơ sở dữ liệu.
+    - **Trả về**: Một danh sách (`List<Project>`) chứa tất cả các dự án.
+
+## Lớp `Project`
+
+Lớp `Project` đại diện cho một dự án trong hệ thống. Các phương thức của lớp này cho phép truy xuất và cập nhật thông tin dự án.
+
+### Các Operations
+
+- **`getProjectDetails(): String`**
+    - **Mô tả**: Trả về thông tin chi tiết của dự án dưới dạng chuỗi.
+    - **Trả về**: Một chuỗi (`String`) chứa các thông tin về dự án như tên, mô tả, ngày bắt đầu, ngày kết thúc, và trạng thái.
+
+- **`updateProjectDetails(name: String, description: String, startDate: Date, endDate: Date): void`**
+    - **Mô tả**: Cập nhật các chi tiết của dự án, bao gồm tên, mô tả, ngày bắt đầu và ngày kết thúc.
+    - **Tham số**:
+        - `name`: Tên của dự án.
+        - `description`: Mô tả của dự án.
+        - `startDate`: Ngày bắt đầu của dự án.
+        - `endDate`: Ngày kết thúc của dự án.
+    - **Trả về**: Không có giá trị trả về.
+
+- **`setProjectStatus(status: String): void`**
+    - **Mô tả**: Cập nhật trạng thái của dự án (ví dụ: "hoàn thành", "đang tiến hành", "đã hủy").
+    - **Tham số**:
+        - `status`: Trạng thái của dự án (chuỗi).
+    - **Trả về**: Không có giá trị trả về.
+
+- **`getProjectStatus(): String`**
+    - **Mô tả**: Lấy trạng thái hiện tại của dự án.
+    - **Trả về**: Một chuỗi (`String`) đại diện cho trạng thái của dự án.
+
+## Lớp `DatabaseConnection`
+
+Lớp `DatabaseConnection` chịu trách nhiệm kết nối và tương tác với cơ sở dữ liệu. Các phương thức trong lớp này sẽ giúp thực hiện các câu truy vấn và cập nhật trong cơ sở dữ liệu.
+
+### Các Operations
+
+- **`connect(): void`**
+    - **Mô tả**: Thiết lập kết nối đến cơ sở dữ liệu.
+    - **Trả về**: Không có giá trị trả về.
+
+- **`disconnect(): void`**
+    - **Mô tả**: Ngắt kết nối khỏi cơ sở dữ liệu.
+    - **Trả về**: Không có giá trị trả về.
+
+- **`executeQuery(query: String): ResultSet`**
+    - **Mô tả**: Thực thi một câu truy vấn SQL và trả về kết quả.
+    - **Tham số**:
+        - `query`: Câu truy vấn SQL cần thực thi.
+    - **Trả về**: Đối tượng `ResultSet` chứa kết quả truy vấn.
+
+- **`executeUpdate(query: String): int`**
+    - **Mô tả**: Thực thi một câu truy vấn SQL như `INSERT`, `UPDATE`, hoặc `DELETE` và trả về số lượng bản ghi bị ảnh hưởng.
+    - **Tham số**:
+        - `query`: Câu truy vấn SQL cần thực thi.
+    - **Trả về**: Số lượng bản ghi bị ảnh hưởng bởi câu truy vấn (dạng `int`).
 
 ## Xác định các trạng thái
 
