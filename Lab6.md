@@ -661,3 +661,87 @@ Giao diện `ssInterface` chứa các phương thức cần thiết để tươn
 
 Lớp `Maintain Timecard` và giao diện `ssInterface` có mối quan hệ kế thừa (implements), nghĩa là lớp `Maintain Timecard` phải cài đặt tất cả các phương thức từ giao diện `ssInterface`. Điều này đảm bảo rằng tất cả các chức năng cơ bản của Timecard đều được cung cấp thông qua giao diện này.
 
+## 4. Xác định các phụ thuộc, quan hệ kết hợp
+
+![Class Diagram](https://www.planttext.com/api/plantuml/png/X5J1RXCn4BtlLunoAI0r4jSSK85mGcc2KhYxtY6sih4NpsmgG9mvSqHSMY74gUBUFVImNx9Vm2zWrvkjspJai5hlyyppl9dd_LjV7n4BnzMgoB83UAs4XjFcme9iBYGKRVsZ1AcQIwCoMGWYc0Xjs3ydUeLIk1m-Pm2mIj17ZmEo5eNE1UCjGcmTZWMB-Bb03diTy2Nh-DzDPoyZfxJ6eEGJUunyPjto7gyJXeHaRKtSA9sLI7IVRuwoSfe_HavHiKB3Mdg6juGkfWRKElq9dyj04S72BZQvhzO-9oKTQsAdJwjmUYJEDqYYaD3anvRr-t1SNsTLXlBdBBYYb7Cw7R-Op6Veo5EXaLt59DO9fKD_2gP8ZWLoqiK3U5C90wgjlyAolRhciFnPmhevXz8lVm6hggs_osnhaeEd0pWyzA_XyCaW3c845I7j2-rxFFBbb5urWJNxakxqS0G-5fsV9y6PPhKlURjPe-Wl0jzT4TemIyN2GhVr7n5TpQevDofqu-gtoMvq3eVFjfqzwir6MIznHsHgBChkQDkHOMwSuOEtjUp8s0oVG9YyankKJjhwcuOF_TXJhV46zzK75oJuKldrhRO73K1XD-t0VyUu9_h1kNKfsP5tJlWF_GC00F__0m00)
+
+## Các Thành Phần Chính
+
+### **MaintainTimecard**
+- **Chức năng chính**: 
+  - Duy trì và quản lý thông tin thời gian của người dùng.
+  - Kiểm tra tính hợp lệ của thời gian và lưu trữ dữ liệu.
+  - Các phương thức chính:
+    - `maintainTime()`: Duy trì dữ liệu thời gian.
+    - `validateTime()`: Kiểm tra tính hợp lệ của dữ liệu thời gian.
+    - `storeData()`: Lưu trữ thông tin thời gian vào hệ thống.
+    - `getTimeData()`: Truy xuất dữ liệu thời gian.
+  
+### **VOPC (Virtual Online Payment Connector)**
+- **Chức năng chính**: 
+  - Kết nối mạng và xử lý các giao dịch.
+  - Phương thức chính:
+    - `connectToNetwork()`: Kết nối tới mạng để truyền tải dữ liệu.
+    - `validateTransaction()`: Kiểm tra tính hợp lệ của các giao dịch.
+    - `processData()`: Xử lý dữ liệu giao dịch.
+
+### **Security**
+- **Chức năng chính**: 
+  - Cung cấp các chức năng bảo mật như xác thực người dùng và cấp quyền truy cập.
+  - Phương thức chính:
+    - `authenticateUser()`: Xác thực người dùng.
+    - `authorizeAccess()`: Cấp quyền truy cập cho người dùng.
+    - `logSecurityEvent()`: Ghi lại các sự kiện bảo mật.
+
+### **Distribution**
+- **Chức năng chính**: 
+  - Phân phối dữ liệu và thông báo đến các bên liên quan.
+  - Phương thức chính:
+    - `distributeData()`: Phân phối dữ liệu.
+    - `sendNotification()`: Gửi thông báo đến người dùng.
+    - `updateStatus()`: Cập nhật trạng thái của dữ liệu.
+
+### **OODBMSPersistency**
+- **Chức năng chính**: 
+  - Quản lý tính bền vững của dữ liệu thông qua việc lưu trữ vào cơ sở dữ liệu OODBMS (Object-Oriented Database Management System).
+  - Phương thức chính:
+    - `saveData()`: Lưu dữ liệu vào hệ thống OODBMS.
+    - `retrieveData()`: Truy xuất dữ liệu từ hệ thống OODBMS.
+    - `deleteData()`: Xóa dữ liệu khỏi hệ thống OODBMS.
+
+## Mối Quan Hệ Giữa Các Thành Phần
+
+### **MaintainTimecard và VOPC**
+- **Mối quan hệ**: `MaintainTimecard` **sử dụng** `VOPC`.
+  - `MaintainTimecard` gọi đến các phương thức của `VOPC` để xử lý các giao dịch và xác thực dữ liệu.
+  - **Mối quan hệ**: **has-a** (MaintainTimecard sử dụng VOPC như một dịch vụ hỗ trợ).
+  
+### **MaintainTimecard và Security**
+- **Mối quan hệ**: `MaintainTimecard` **phụ thuộc vào** `Security`.
+  - `MaintainTimecard` dựa vào `Security` để xác thực người dùng và bảo vệ các giao dịch dữ liệu.
+  - **Mối quan hệ**: **depends-on** (MaintainTimecard phụ thuộc vào Security để thực hiện các chức năng bảo mật).
+
+### **MaintainTimecard và Distribution**
+- **Mối quan hệ**: `MaintainTimecard` **tương tác với** `Distribution`.
+  - `MaintainTimecard` sử dụng `Distribution` để phân phối dữ liệu và gửi thông báo đến người dùng.
+  - **Mối quan hệ**: **interacts with** (MaintainTimecard tương tác với Distribution để gửi thông tin).
+
+### **MaintainTimecard và OODBMSPersistency**
+- **Mối quan hệ**: `MaintainTimecard` **lưu trữ dữ liệu** trong `OODBMSPersistency`.
+  - `MaintainTimecard` sử dụng `OODBMSPersistency` để lưu trữ và truy xuất thông tin thời gian.
+  - **Mối quan hệ**: **stores data** (MaintainTimecard lưu trữ dữ liệu vào OODBMSPersistency).
+
+### **Security và các Thành Phần Khác**
+- **Mối quan hệ**: 
+  - `Security` **bảo mật** và **xác thực** các yêu cầu từ `VOPC`, `Distribution`, và `OODBMSPersistency`.
+  - Các mối quan hệ chi tiết:
+    - `Security` bảo mật và xác thực `VOPC`.
+    - `Security` bảo mật và xác thực `Distribution`.
+    - `Security` bảo mật và xác thực `OODBMSPersistency`.
+
+## Phụ Thuộc và Quan Hệ
+- **Phụ thuộc**:
+  - `MaintainTimecard` phụ thuộc vào `VOPC`, `Security`, `Distribution`, và `OODBMSPersistency` để thực hiện các chức năng của mình.
+  
+- **Quan hệ kết hợp**:
+  - `MaintainTimecard` có quan hệ kết hợp với `VOPC`, `Security`, `Distribution`, và `OODBMSPersistency`, khi nó sử dụng hoặc tương tác với các lớp này để thực hiện các tác vụ cụ thể.
